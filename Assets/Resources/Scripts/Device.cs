@@ -4,7 +4,7 @@ using System.Collections;
 public abstract class Device : MonoBehaviour
 {
 
-	public static int unlockSeason;
+	public int unlockSeason;
 
 	// Use this for initialization
 	void Start ()
