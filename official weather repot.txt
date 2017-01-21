@@ -1,0 +1,20 @@
+The Officiale Weathere Reporte to be Deliverede to the Towne Mayore:
+
+The temperature for today is <INPUT>.
+The heat levels for midday will be <DROPDOWN>.
+// Pressure for today should be <INPUT>.
+Pressure levels today will feel <DROPDOWN>.
+Based on cloud cover levels, today will be <DROPDOWN>.
+There <will / will not> be fog today.
+Humidity levels will be around <INPUT> percent.
+The sky will be of a <DROPDOWN> color.
+Precipitation levels will be <DROPDOWN>.
+Expect <DROPDOWN> winds for today.
+Wind strength should be around <INPUT> knots.
+The wind will be blowing towards the <DROPDOWN>.
+The sea is <DROPDOWN>.
+
+APOCALYPSE IMMINENTE: (pray to jesus / not yet)
+
+Sincerely,
+<SIGN NAME HERE>
