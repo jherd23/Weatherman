@@ -1,52 +1,74 @@
 fileFormatVersion: 2
 guid: f5ce2a9ce39fe4338b2b47e56641bf49
-timeCreated: 1484972360
+timeCreated: 1484973701
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: pasted__group
-    100004: pasted__pasted__pCylinder2
-    100006: pasted__pasted__pSphere1
-    100008: pasted__pasted__pSphere2
-    100010: pasted__pasted__transform1
-    100012: pasted__pasted__transform2
-    100014: pasted__pCylinder2
-    100016: pasted__pCylinder3
-    100018: pasted__pSphere1
-    100020: pasted__pSphere2
-    100022: pasted__pSphere2_MeshPart0
-    100024: pasted__pSphere2_MeshPart1
-    100026: pasted__pSphere2_MeshPart2
-    100028: pasted__pSphere2_MeshPart3
-    100030: pasted__pSphere2_MeshPart4
-    100032: pasted__pSphere2_MeshPart5
-    100034: pasted__pSphere2_MeshPart6
-    100036: pasted__pTorus1
-    100038: pasted__transform1
-    100040: pasted__transform2
+    100002: group
+    100004: group1
+    100006: pasted__group
+    100008: pasted__group 1
+    100010: pasted__pasted__pCylinder2
+    100012: pasted__pasted__pCylinder2 1
+    100014: pasted__pasted__pSphere1
+    100016: pasted__pasted__pSphere1 1
+    100018: pasted__pasted__pSphere2
+    100020: pasted__pasted__transform1
+    100022: pasted__pasted__transform1 1
+    100024: pasted__pasted__transform2
+    100026: pasted__pasted__transform2 1
+    100028: pasted__pCylinder2
+    100030: pasted__pCylinder2 1
+    100032: pasted__pCylinder3
+    100034: pasted__pSphere1
+    100036: pasted__pSphere1 1
+    100038: pasted__pSphere2
+    100040: pasted__pSphere2_MeshPart0
+    100042: pasted__pSphere2_MeshPart1
+    100044: pasted__pSphere2_MeshPart2
+    100046: pasted__pSphere2_MeshPart3
+    100048: pasted__pSphere2_MeshPart4
+    100050: pasted__pSphere2_MeshPart5
+    100052: pasted__pSphere2_MeshPart6
+    100054: pasted__pTorus1
+    100056: pasted__transform1
+    100058: pasted__transform1 1
+    100060: pasted__transform2
+    100062: pasted__transform2 1
     400000: //RootNode
-    400002: pasted__group
-    400004: pasted__pasted__pCylinder2
-    400006: pasted__pasted__pSphere1
-    400008: pasted__pasted__pSphere2
-    400010: pasted__pasted__transform1
-    400012: pasted__pasted__transform2
-    400014: pasted__pCylinder2
-    400016: pasted__pCylinder3
-    400018: pasted__pSphere1
-    400020: pasted__pSphere2
-    400022: pasted__pSphere2_MeshPart0
-    400024: pasted__pSphere2_MeshPart1
-    400026: pasted__pSphere2_MeshPart2
-    400028: pasted__pSphere2_MeshPart3
-    400030: pasted__pSphere2_MeshPart4
-    400032: pasted__pSphere2_MeshPart5
-    400034: pasted__pSphere2_MeshPart6
-    400036: pasted__pTorus1
-    400038: pasted__transform1
-    400040: pasted__transform2
+    400002: group
+    400004: group1
+    400006: pasted__group
+    400008: pasted__group 1
+    400010: pasted__pasted__pCylinder2
+    400012: pasted__pasted__pCylinder2 1
+    400014: pasted__pasted__pSphere1
+    400016: pasted__pasted__pSphere1 1
+    400018: pasted__pasted__pSphere2
+    400020: pasted__pasted__transform1
+    400022: pasted__pasted__transform1 1
+    400024: pasted__pasted__transform2
+    400026: pasted__pasted__transform2 1
+    400028: pasted__pCylinder2
+    400030: pasted__pCylinder2 1
+    400032: pasted__pCylinder3
+    400034: pasted__pSphere1
+    400036: pasted__pSphere1 1
+    400038: pasted__pSphere2
+    400040: pasted__pSphere2_MeshPart0
+    400042: pasted__pSphere2_MeshPart1
+    400044: pasted__pSphere2_MeshPart2
+    400046: pasted__pSphere2_MeshPart3
+    400048: pasted__pSphere2_MeshPart4
+    400050: pasted__pSphere2_MeshPart5
+    400052: pasted__pSphere2_MeshPart6
+    400054: pasted__pTorus1
+    400056: pasted__transform1
+    400058: pasted__transform1 1
+    400060: pasted__transform2
+    400062: pasted__transform2 1
     2300000: pasted__pasted__pSphere2
     2300002: pasted__pCylinder3
     2300004: pasted__pSphere2_MeshPart0
