@@ -6,20 +6,14 @@ public class Thermometer : Device {
 
 	public Ball orange, green, blue, red;
 
-	float sec;
-
 	// Use this for initialization
 	void Start () {
-		sec = 1;
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (sec > 0) {
-			sec -= Time.deltaTime;
-		} else {
-			set (new Day (52, 0, Day.pressureRange.high, Day.cloudCover.heavy, false, 0, Day.skyColor.blue, Day.precipitation.clear,Day.windType.breeze, 0, Day.seaState.calm, Day.temperatureRange.caution, Day.windDirection.E));
-		}
+		
 	}
 
 	public override void set(Day d) {
