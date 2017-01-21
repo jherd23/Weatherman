@@ -16,7 +16,7 @@ public class Day : MonoBehaviour {
 	public pressureRange PressureRange;
 	public cloudCover Cloudcover;
 	bool Fog;
-	public humidity Humidity;
+	public int Humidity;
 	public skyColor Skycolor;
 	public precipitation Precipitation;
 	public windType Windtype;
@@ -39,7 +39,6 @@ public class Day : MonoBehaviour {
 	public enum temperatureRange {heatstroke1, heatstroke2, heatstroke3, fatigue, caution, fair};
 	public enum pressureRange {v_Low, low, moderate, high, v_High};
 	public enum cloudCover {sunny, partly_cloudy, very_cloudy, overcast, heavy};
-	public enum humidity {arid, dry, neutral, moist, sticky};
 	public enum skyColor {blue, grey, green};
 	public enum precipitation {clear, light, mid, hard, torrential};
 	public enum windType {calm, breeze, strong_breeze, moderate, gale, storm, hurricane}; // based loosely on beufort scale
@@ -60,7 +59,7 @@ public class Day : MonoBehaviour {
 
 	// Constructor. Takes in passed values to determine the weather of this day.
 
-	public Day (int temp, int pr, pressureRange p, cloudCover c, bool fog, humidity h, skyColor sc, precipitation prc, windType wt, int ws, 
+	public Day (int temp, int pr, pressureRange p, cloudCover c, bool fog, int h, skyColor sc, precipitation prc, windType wt, int ws, 
 		seaState st, temperatureRange tr, windDirection wd) 
 
 	{
