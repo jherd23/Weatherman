@@ -26,6 +26,17 @@ ModelImporter:
     100036: pasted__pTorus1
     100038: pasted__transform1
     100040: pasted__transform2
+    100042: group
+    100044: group1
+    100046: pasted__group 1
+    100048: pasted__pasted__pCylinder2 1
+    100050: pasted__pasted__pSphere1 1
+    100052: pasted__pasted__transform1 1
+    100054: pasted__pasted__transform2 1
+    100056: pasted__pCylinder2 1
+    100058: pasted__pSphere1 1
+    100060: pasted__transform1 1
+    100062: pasted__transform2 1
     400000: //RootNode
     400002: pasted__group
     400004: pasted__pasted__pCylinder2
@@ -47,6 +58,17 @@ ModelImporter:
     400036: pasted__pTorus1
     400038: pasted__transform1
     400040: pasted__transform2
+    400042: group
+    400044: group1
+    400046: pasted__group 1
+    400048: pasted__pasted__pCylinder2 1
+    400050: pasted__pasted__pSphere1 1
+    400052: pasted__pasted__transform1 1
+    400054: pasted__pasted__transform2 1
+    400056: pasted__pCylinder2 1
+    400058: pasted__pSphere1 1
+    400060: pasted__transform1 1
+    400062: pasted__transform2 1
     2300000: pasted__pasted__pSphere2
     2300002: pasted__pCylinder3
     2300004: pasted__pSphere2_MeshPart0
@@ -57,6 +79,7 @@ ModelImporter:
     2300014: pasted__pSphere2_MeshPart5
     2300016: pasted__pSphere2_MeshPart6
     2300018: pasted__pTorus1
+    2300020: pasted__pSphere2
     3300000: pasted__pasted__pSphere2
     3300002: pasted__pCylinder3
     3300004: pasted__pSphere2_MeshPart0
@@ -67,6 +90,7 @@ ModelImporter:
     3300014: pasted__pSphere2_MeshPart5
     3300016: pasted__pSphere2_MeshPart6
     3300018: pasted__pTorus1
+    3300020: pasted__pSphere2
     4300000: pasted__pSphere2_MeshPart0
     4300002: pasted__pSphere2_MeshPart1
     4300004: pasted__pSphere2_MeshPart2
@@ -77,6 +101,7 @@ ModelImporter:
     4300014: pasted__pTorus1
     4300016: pasted__pCylinder3
     4300018: pasted__pasted__pSphere2
+    4300020: pasted__pSphere2
     9500000: //RootNode
   materials:
     importMaterials: 1
