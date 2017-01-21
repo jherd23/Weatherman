@@ -79,6 +79,7 @@ ModelImporter:
     2300014: pasted__pSphere2_MeshPart5
     2300016: pasted__pSphere2_MeshPart6
     2300018: pasted__pTorus1
+    2300020: pasted__pSphere2
     3300000: pasted__pasted__pSphere2
     3300002: pasted__pCylinder3
     3300004: pasted__pSphere2_MeshPart0
@@ -89,6 +90,7 @@ ModelImporter:
     3300014: pasted__pSphere2_MeshPart5
     3300016: pasted__pSphere2_MeshPart6
     3300018: pasted__pTorus1
+    3300020: pasted__pSphere2
     4300000: pasted__pSphere2_MeshPart0
     4300002: pasted__pSphere2_MeshPart1
     4300004: pasted__pSphere2_MeshPart2
@@ -99,6 +101,7 @@ ModelImporter:
     4300014: pasted__pTorus1
     4300016: pasted__pCylinder3
     4300018: pasted__pasted__pSphere2
+    4300020: pasted__pSphere2
     9500000: //RootNode
   materials:
     importMaterials: 1
