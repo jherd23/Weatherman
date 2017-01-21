@@ -1,8 +1,14 @@
 print "Starting maya loading and fbx conversion \n";
 			
+<<<<<<< HEAD
 if (`file -q -exists "/Users/Sanjana/GitHub/Weatherman/Assets/ballForThermometer.ma"`)
 {
 	file -o "/Users/Sanjana/GitHub/Weatherman/Assets/ballForThermometer.ma";
+=======
+if (`file -q -exists "/Users/Sage/Weatherman/Assets/galilean.ma"`)
+{
+	file -o "/Users/Sage/Weatherman/Assets/galilean.ma";
+>>>>>>> 5cbb578e3cbfe4fb33e30acc96d57aa6fd9fc0d6
 	FBXExportEmbeddedTextures -v false;
 	// FBXExportHardEdges -v true;
 	FBXExportApplyConstantKeyReducer -v false;
