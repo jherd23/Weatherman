@@ -9,6 +9,8 @@ public class WeatherVane : Device {
 	float seconds = 1;
 	bool thing = true;
 
+	public static int unlockSeason = 0;
+
 	// Use this for initialization
 	void Start () {
 		dir = Day.windDirection.N;
