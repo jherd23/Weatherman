@@ -23,6 +23,7 @@ public class Thermometer : Device {
 	}
 
 	public override void set(Day d) {
+		
 		int temperature = d.Temperature;
 		if (temperature < 20) {
 			orange.moveToTop ();

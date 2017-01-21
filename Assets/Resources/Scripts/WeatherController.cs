@@ -40,6 +40,7 @@ public class WeatherController : MonoBehaviour {
 		}
 
 		// manual set of all predictions (1 means ask, 0 means don't)
+//		predictions[0] = new bool[0,0,1,0,0, 0,0,0,0,0, 1,0,1,0]; //anomaly, wind type, wind direction
 		predictions[0] = new bool[] {false,false,true,false,false, false,false,false,false,false, true,false,true,false}; //anomaly, wind type, wind direction -- barometer, wind vane
 		predictions[1] = new bool[] {false,false,true,false,false, false,false,false,false,false, true,false,true,false}; //anomaly, wind type, wind direction -- barometer, wind vane
 		predictions[2] = new bool[] {false,false,true,false,false, false,false,false,false,false, true,false,true,false}; //anomaly, wind type, wind direction -- barometer, wind vane
@@ -130,11 +131,12 @@ public class WeatherController : MonoBehaviour {
 		
 	}
 
-	void setInstruments(Day d) {
-		for (int i = 0; i < devices.Length; i++) {
-			if (d.season >= devices[i].unlockSeason) {
-				devices [i].set (d);
-			}
-		}
-	}
+//	void setInstruments(Day d) {
+//		for (int i = 0; i < devices.Length; i++) {
+//			if (d.season >= devices[i].unlockSeason) {
+//				devices [i].set (d);
+//			}
+//		}
+//	}
+
 }
