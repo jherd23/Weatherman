@@ -1,0 +1,22 @@
+print "Starting maya loading and fbx conversion \n";
+			
+if (`file -q -exists "/Users/jackherd/Documents/Weatherman/Weatherman/Assets/Resources/ballForThermometer.ma"`)
+{
+	file -o "/Users/jackherd/Documents/Weatherman/Weatherman/Assets/Resources/ballForThermometer.ma";
+	FBXExportEmbeddedTextures -v false;
+	// FBXExportHardEdges -v true;
+	FBXExportApplyConstantKeyReducer -v false;
+	FBXExportShowUI -v false;
+
+	print "Before fbx export\n";
+	FBXExport -f "/Users/jackherd/Documents/Weatherman/Weatherman/Temp/ExportedFBXFile.fbx";
+	print "after fbx export\n";
+}
+else
+	print "Could not open Maya file.";
+
+system ("del \"!//UNITY_TEMP_WIN//!\\CommandPipe\"");
+
+$donepipeKill = `fopen "/Users/jackherd/Documents/Weatherman/Weatherman/Temp/SyncPipeKill" "w"`;
+fwrite $donepipeKill "Done";
+fclose $donepipeKill;

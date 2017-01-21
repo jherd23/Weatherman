@@ -8,6 +8,7 @@ public class Day : MonoBehaviour {
 
 	// state variables for Day
 
+	public int season;
 	public int Temperature;
 	public bool Anomaly;
 	 pressure Pressure;
