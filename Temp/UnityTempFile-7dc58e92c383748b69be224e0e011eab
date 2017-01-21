@@ -17,7 +17,6 @@
 -define:UNITY_5_5_0
 -define:UNITY_5_5
 -define:UNITY_5
--define:UNITY_64
 -define:ENABLE_AUDIO
 -define:ENABLE_CACHING
 -define:ENABLE_CLOTH
@@ -76,12 +75,14 @@
 -define:UNITY_EDITOR
 -define:UNITY_EDITOR_64
 -define:UNITY_EDITOR_OSX
+'Assets/Resources/Scripts/Ball.cs'
 'Assets/Resources/Scripts/CameraMovement.cs'
 'Assets/Resources/Scripts/Day.cs'
 'Assets/Resources/Scripts/Device.cs'
 'Assets/Resources/Scripts/Thermometer.cs'
 'Assets/Resources/Scripts/WeatherController.cs'
 'Assets/Resources/Scripts/WeatherVane.cs'
+'Assets/Resources/Scripts/WindowOpener.cs'
 -r:'/Applications/Unity/Unity.app/Contents/MonoBleedingEdge/lib/mono/unity/System.Runtime.Serialization.dll'
 -r:'/Applications/Unity/Unity.app/Contents/MonoBleedingEdge/lib/mono/unity/System.Xml.Linq.dll'
 -r:'/Applications/Unity/Unity.app/Contents/MonoBleedingEdge/lib/mono/unity/UnityScript.dll'
