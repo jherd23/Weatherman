@@ -15,4 +15,9 @@ public class Thermometer : Device {
 	void Update () {
 		
 	}
+
+	public override void set(Day d) {
+
+	}
+
 }
