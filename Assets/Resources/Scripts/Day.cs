@@ -9,18 +9,18 @@ public class Day {
 	// state variables for Day
 
 	public int season;
-	public int Temperature;
+	public float Temperature;
 	public temperatureRange Temprange;
 	public bool Anomaly;
-	int Pressure;
+	float Pressure;
 	public pressureRange PressureRange;
 	public cloudCover Cloudcover;
 	bool Fog;
-	public int Humidity;
+	public float Humidity;
 	public skyColor Skycolor;
 	public precipitation Precipitation;
 	public windType Windtype;
-	int WindSpeed;
+	float WindSpeed;
 	public seaState Seastate;
 	public windDirection WindDirection;
 
@@ -59,7 +59,7 @@ public class Day {
 
 	// Constructor. Takes in passed values to determine the weather of this day.
 
-	public Day (int temp, int pr, pressureRange p, cloudCover c, bool fog, int h, skyColor sc, precipitation prc, windType wt, int ws, 
+	public Day (float temp, float pr, pressureRange p, cloudCover c, bool fog, float h, skyColor sc, precipitation prc, windType wt, float ws, 
 		seaState st, temperatureRange tr, windDirection wd) 
 
 	{

@@ -12,7 +12,8 @@ public class WeatherController : MonoBehaviour {
 	public Day[] days; // contains weather conditions for each day
 
 	public bool[][] predictions; // contains bools for prediction required by each day
-	/* 1) Temperature (int)
+
+	/* 1) Temperature (float)
 	 * 2) Temperature Range
 	 * 3) Anomaly (bool)
 	 * 4) Pressure (int) NEVER USED
@@ -30,12 +31,61 @@ public class WeatherController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		numberOfSeasons = 12;
-		daysPerSeason = 6;
+		Random rand = Random();
+		float instability = 0;
+		int numberOfSeasons = 8;
+		int daysPerSeason = 12;
+		int totDays = numberOfSeasons * daysPerSeason;
+		int daysPerYear = 4 * daysPerSeason;
+
+		//sinusoidal model
+		float avgTemp = 55;
+		float ampTemp = 30;
+		float varianceTemp = 2;
+
+		float avgPres  = 100;
+		float ampPres = 3;
+
+		float avgHum = 50;
+		float ampHum = 45;
+
+		float randomStagger = rand.Range(-Mathf.PI,Mathf.PI);
+		float Temperature = 50;
+		float Pressure = 100;
+
+
 
 		//days = generateDays() //TODO: make that
-		for (int i = 0; i < numberOfSeasons * daysPerSeason; i++) {
-			//days [i] = Day ();
+		for (int i = -6; i < totDays; i++) {
+			instability = (float)i * 10 / totDays;
+
+			float old_temp = Temperature;
+			Temperature = avgTemp + ampTemp * Mathf.sin((float) i * 2 * Mathf.PI / (float) daysPerYear) + (Mathf.PI / 8)) + (ampTemp / 10)*Mathf.sin((float) i * Mathf.PI / ((daysPerYear / 16)) + (randomStagger)) + rand.Range(-varianceTemp, varianceTemp);
+			old_pressure = Pressure;
+			Pressure = avgPres + ampPres * Mathf.sin((float) (i+2) * Mathf.PI / (daysPerYear / 8) + randomStagger) + (Temperature - old_temp) / (1440 / daysPerYear);
+			Humidity = avgHum + 
+				ampHum * Mathf.sin((float) (i+5) * Mathf.PI / (daysPerYear / 33) + randomStagger) + 
+				30*Mathf.sin((float) (i-5) * Mathf.PI / ((daysPerYear / 64)) + (randomStagger)) + 
+				((float) daysPerYear / 72)*Mathf.abs(old_temp - Temperature)*(old_temp - Temperature)) + 
+				((float) daysPerYear / 36)*(old_pressure - Pressure)*(old_pressure - Pressure);
+
+			if(Humidity < 0)
+			{
+				Humidity = 0;
+			}
+			if (Humidity > 85)
+			{
+				Precipitation = 0.5*Mathf.Exp((Pressure-old_pressure)/3) * (Humidity-85) / 5;
+					if (Precipitation > 10)
+					{
+						Precipitation = 10;
+					}
+					if(Humidity > 100)
+					{
+						Humidity = 100;
+					}
+				if(Temperature <= 32){
+			}
 		}
 
 		// manual set of all predictions (1 means ask, 0 means don't)
