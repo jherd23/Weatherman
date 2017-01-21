@@ -13,20 +13,20 @@ public class WeatherController : MonoBehaviour {
 	public Day[] days; // contains weather conditions for each day
 
 	public bool[][] predictions; // contains bools for prediction required by each day
-	/* 1) Temperature
+	/* 1) Temperature (int)
 	 * 2) Temperature Range
-	 * 3) Anomaly
-	 * 4) Pressure
+	 * 3) Anomaly (bool)
+	 * 4) Pressure (int)
 	 * 5) PressureRange
 	 * 6) Cloudcover
-	 * 7) Humidity
-	 * 8) Sky Color
-	 * 9) Precipitation
-	 * 10) Wind Type
-	 * 11) Wind Speed
-	 * 12) Wind Direction
-	 * 13) Sea State
-	 * 
+	 * 7) Fog (bool)
+	 * 8) Humidity
+	 * 9) Sky Color
+	 * 10) Precipitation
+	 * 11) Wind Type
+	 * 12) Wind Speed (int)
+	 * 13) Wind Direction
+	 * 14) Sea State
 	*/
 
 	// Use this for initialization
@@ -35,12 +35,12 @@ public class WeatherController : MonoBehaviour {
 		daysPerSeason = 6;
 
 		//days = generateDays() //TODO: make that
-		for (int i = 0; i < numberOfSeasons + daysPerSeason; i++) {
+		for (int i = 0; i < numberOfSeasons * daysPerSeason; i++) {
 			//days [i] = Day ();
 		}
 
-		// manual set of all predictions
-		//predictions[0] = ;
+		// manual set of all predictions (1 means ask, 0 means don't)
+		predictions[0] = new bool[0,0,1,0,0, 0,0,0,0,0, 1,0,1,0]; //anomaly, wind type, wind direction
 
 
 	}

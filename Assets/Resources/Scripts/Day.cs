@@ -15,10 +15,12 @@ public class Day : MonoBehaviour {
 	int Pressure;
 	public pressureRange PressureRange;
 	public cloudCover Cloudcover;
+	bool Fog;
 	public humidity Humidity;
 	public skyColor Skycolor;
 	public precipitation Precipitation;
 	public windType Windtype;
+	int WindSpeed;
 	public seaState Seastate;
 	public windDirection WindDirection;
 
@@ -58,7 +60,7 @@ public class Day : MonoBehaviour {
 
 	// Constructor. Takes in passed values to determine the weather of this day.
 
-	public Day (int temp, int pr, pressureRange p, cloudCover c, humidity h, skyColor sc, precipitation prc, windType wt, 
+	public Day (int temp, int pr, pressureRange p, cloudCover c, bool fog, humidity h, skyColor sc, precipitation prc, windType wt, int ws, 
 		seaState st, temperatureRange tr, windDirection wd) 
 
 	{
@@ -66,10 +68,12 @@ public class Day : MonoBehaviour {
 		this.Pressure = pr;
 		this.PressureRange = p;
 		this.Cloudcover = c;
+		this.Fog = fog;
 		this.Humidity = h;
 		this.Skycolor = sc;
 		this.Precipitation = prc;
 		this.Windtype = wt;
+		this.WindSpeed = ws;
 		this.Seastate = st;
 		this.Temprange = tr;
 		this.WindDirection = wd;
