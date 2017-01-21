@@ -1,21 +1,15 @@
 print "Starting maya loading and fbx conversion \n";
 			
-<<<<<<< HEAD
-if (`file -q -exists "/Users/Sanjana/GitHub/Weatherman/Assets/ballForThermometer.ma"`)
+if (`file -q -exists "/Users/Sage/Weatherman/Assets/Resources/ballForThermometer.ma"`)
 {
-	file -o "/Users/Sanjana/GitHub/Weatherman/Assets/ballForThermometer.ma";
-=======
-if (`file -q -exists "/Users/Sage/Weatherman/Assets/galilean.ma"`)
-{
-	file -o "/Users/Sage/Weatherman/Assets/galilean.ma";
->>>>>>> 5cbb578e3cbfe4fb33e30acc96d57aa6fd9fc0d6
+	file -o "/Users/Sage/Weatherman/Assets/Resources/ballForThermometer.ma";
 	FBXExportEmbeddedTextures -v false;
 	// FBXExportHardEdges -v true;
 	FBXExportApplyConstantKeyReducer -v false;
 	FBXExportShowUI -v false;
 
 	print "Before fbx export\n";
-	FBXExport -f "/Users/Sanjana/GitHub/Weatherman/Temp/ExportedFBXFile.fbx";
+	FBXExport -f "/Users/Sage/Weatherman/Temp/ExportedFBXFile.fbx";
 	print "after fbx export\n";
 }
 else
@@ -23,6 +17,6 @@ else
 
 system ("del \"!//UNITY_TEMP_WIN//!\\CommandPipe\"");
 
-$donepipeKill = `fopen "/Users/Sanjana/GitHub/Weatherman/Temp/SyncPipeKill" "w"`;
+$donepipeKill = `fopen "/Users/Sage/Weatherman/Temp/SyncPipeKill" "w"`;
 fwrite $donepipeKill "Done";
 fclose $donepipeKill;
