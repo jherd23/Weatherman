@@ -46,7 +46,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Resources\Scripts\BGMusicPlayer.cs" />
      <Compile Include="Assets\Resources\Scripts\Ball.cs" />
      <Compile Include="Assets\Resources\Scripts\CameraMovement.cs" />
      <Compile Include="Assets\Resources\Scripts\Day.cs" />
