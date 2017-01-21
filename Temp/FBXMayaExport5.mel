@@ -1,8 +1,8 @@
 print "Starting maya loading and fbx conversion \n";
 			
-if (`file -q -exists "/Users/Sage/Weatherman/Assets/Resources/ballForThermometer.ma"`)
+if (`file -q -exists "/Users/Sage/Weatherman/Assets/Resources/ballForThermometerBlue.ma"`)
 {
-	file -o "/Users/Sage/Weatherman/Assets/Resources/ballForThermometer.ma";
+	file -o "/Users/Sage/Weatherman/Assets/Resources/ballForThermometerBlue.ma";
 	FBXExportEmbeddedTextures -v false;
 	// FBXExportHardEdges -v true;
 	FBXExportApplyConstantKeyReducer -v false;

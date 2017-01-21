@@ -1,1 +1,2 @@
 Assets/Resources/ballForThermometer.ma
+Assets/Resources/ballForThermometerBlue.ma
