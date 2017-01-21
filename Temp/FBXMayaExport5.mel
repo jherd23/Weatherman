@@ -1,25 +1,15 @@
 print "Starting maya loading and fbx conversion \n";
 			
-<<<<<<< Updated upstream
-if (`file -q -exists "/Users/susannahjones/Weatherman/Assets/ballForThermometerBlue.mb"`)
+if (`file -q -exists "/Users/Sage/Weatherman/Assets/Resources/ballForThermometer.ma"`)
 {
-	file -o "/Users/susannahjones/Weatherman/Assets/ballForThermometerBlue.mb";
-=======
-if (`file -q -exists "/Users/Sanjana/GitHub/Weatherman/Assets/ballForThermometerBlue.mb"`)
-{
-	file -o "/Users/Sanjana/GitHub/Weatherman/Assets/ballForThermometerBlue.mb";
->>>>>>> Stashed changes
+	file -o "/Users/Sage/Weatherman/Assets/Resources/ballForThermometer.ma";
 	FBXExportEmbeddedTextures -v false;
 	// FBXExportHardEdges -v true;
 	FBXExportApplyConstantKeyReducer -v false;
 	FBXExportShowUI -v false;
 
 	print "Before fbx export\n";
-<<<<<<< Updated upstream
-	FBXExport -f "/Users/susannahjones/Weatherman/Temp/ExportedFBXFile.fbx";
-=======
-	FBXExport -f "/Users/Sanjana/GitHub/Weatherman/Temp/ExportedFBXFile.fbx";
->>>>>>> Stashed changes
+	FBXExport -f "/Users/Sage/Weatherman/Temp/ExportedFBXFile.fbx";
 	print "after fbx export\n";
 }
 else
@@ -27,10 +17,6 @@ else
 
 system ("del \"!//UNITY_TEMP_WIN//!\\CommandPipe\"");
 
-<<<<<<< Updated upstream
-$donepipeKill = `fopen "/Users/susannahjones/Weatherman/Temp/SyncPipeKill" "w"`;
-=======
-$donepipeKill = `fopen "/Users/Sanjana/GitHub/Weatherman/Temp/SyncPipeKill" "w"`;
->>>>>>> Stashed changes
+$donepipeKill = `fopen "/Users/Sage/Weatherman/Temp/SyncPipeKill" "w"`;
 fwrite $donepipeKill "Done";
 fclose $donepipeKill;
