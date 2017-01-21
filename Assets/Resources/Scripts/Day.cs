@@ -10,36 +10,39 @@ public class Day : MonoBehaviour {
 
 	public int season;
 	public int Temperature;
+	public temperatureRange Temprange;
 	public bool Anomaly;
-	 pressure Pressure;
-	 cloudCover Cloudcover;
-	 humidity Humidity;
-	 skyColor Skycolor;
-	 precipitation Precipitation;
-	 windType Windtype;
-	 seaState Seastate;
-	 temperatureRange Temprange;
-	 windDirection Windirection;
+	int Pressure;
+	public pressureRange PressureRange;
+	public cloudCover Cloudcover;
+	public humidity Humidity;
+	public skyColor Skycolor;
+	public precipitation Precipitation;
+	public windType Windtype;
+	public seaState Seastate;
+	public windDirection WindDirection;
 
 	// Use this for initialization
-	void Start () {
+	public void Start () {
+	
 	}
 
 	// Update is called once per frame
-	void Update () {		
+	public void Update () {		
+	
 	}
 
 	// possible variations of each state 
 
-	enum pressure {v_Low, low, moderate, high, v_High};
-	enum cloudCover {sunny, partly_cloudy, very_cloudy, overcast, heavy};
-	enum humidity {arid, dry, neutral, moist, sticky};
-	enum skyColor {blue, grey, green};
-	enum precipitation {clear, light, mid, hard, torrential};
-	enum windType {calm, breeze, strong_breeze, moderate, gale, storm, hurricane}; // based loosely on beufort scale
-	enum seaState {calm, smooth, slight, moderate, rough, very_rough, phenomenal};
-	enum temperatureRange {heatstroke1, heatstroke2, heatstroke3, fatigue, caution, fair};
-	enum windDirection {N, S, E, W, NW, NE, SW, SE};
+	public enum temperatureRange {heatstroke1, heatstroke2, heatstroke3, fatigue, caution, fair};
+	public enum pressureRange {v_Low, low, moderate, high, v_High};
+	public enum cloudCover {sunny, partly_cloudy, very_cloudy, overcast, heavy};
+	public enum humidity {arid, dry, neutral, moist, sticky};
+	public enum skyColor {blue, grey, green};
+	public enum precipitation {clear, light, mid, hard, torrential};
+	public enum windType {calm, breeze, strong_breeze, moderate, gale, storm, hurricane}; // based loosely on beufort scale
+	public enum windDirection {N, S, E, W, NW, NE, SW, SE};
+	public enum seaState {calm, smooth, slight, moderate, rough, very_rough, phenomenal};
 
 	public Day (){
 
@@ -55,12 +58,13 @@ public class Day : MonoBehaviour {
 
 	// Constructor. Takes in passed values to determine the weather of this day.
 
-	Day (int temp, pressure p, cloudCover c, humidity h, skyColor sc, precipitation prc, windType wt, 
+	public Day (int temp, int pr, pressureRange p, cloudCover c, humidity h, skyColor sc, precipitation prc, windType wt, 
 		seaState st, temperatureRange tr, windDirection wd) 
 
 	{
 		this.Temperature = temp;
-		this.Pressure = p;
+		this.Pressure = pr;
+		this.PressureRange = p;
 		this.Cloudcover = c;
 		this.Humidity = h;
 		this.Skycolor = sc;
@@ -68,7 +72,8 @@ public class Day : MonoBehaviour {
 		this.Windtype = wt;
 		this.Seastate = st;
 		this.Temprange = tr;
-		this.Windirection = wd;
+		this.WindDirection = wd;
 	}
+		
 
 }
