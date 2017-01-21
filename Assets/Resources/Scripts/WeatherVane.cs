@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WeatherVane : Device {
 
@@ -10,8 +11,7 @@ public class WeatherVane : Device {
 	float velocity;
 	float maxVelocity;
 
-	float seconds = 1;
-	bool thing = true;
+	public Slider slider;
 
 	// Use this for initialization
 	void Start () {
@@ -23,13 +23,15 @@ public class WeatherVane : Device {
 	
 	// Update is called once per frame
 	void Update () {
-		float del = targetDirection - currentDirection;
-		float acceleration = 2f * del;
-		velocity += acceleration * Time.deltaTime;
-		if (velocity > maxVelocity) {
-			velocity = maxVelocity;
-		} else if (velocity < -1 * maxVelocity) {
-			velocity = -1 * maxVelocity;
+		if (slider.value > 700) {
+			float del = targetDirection - currentDirection;
+			float acceleration = 2f * del;
+			velocity += acceleration * Time.deltaTime;
+			if (velocity > maxVelocity) {
+				velocity = maxVelocity;
+			} else if (velocity < -1 * maxVelocity) {
+				velocity = -1 * maxVelocity;
+			}
 		}
 		velocity *= 0.99f;
 		spin (velocity * Time.deltaTime);
