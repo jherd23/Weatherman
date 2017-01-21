@@ -4,33 +4,42 @@ using UnityEngine;
 
 public class WeatherVane : Device {
 
-	Day.windDirection dir;
+	float targetDirection;
+	float currentDirection;
+
+	float velocity;
+	float maxVelocity;
 
 	float seconds = 1;
 	bool thing = true;
 
 	// Use this for initialization
 	void Start () {
-		dir = Day.windDirection.N;
+		targetDirection = 90;
+		velocity = 0;
+		maxVelocity = 90;
+		currentDirection = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (seconds > 0) {
-			seconds -= Time.deltaTime;
-		} else if(thing) {
-			rotate (90);
-			thing = false;
+		float del = targetDirection - currentDirection;
+		float acceleration = 2f * del;
+		velocity += acceleration * Time.deltaTime;
+		if (velocity > maxVelocity) {
+			velocity = maxVelocity;
+		} else if (velocity < -1 * maxVelocity) {
+			velocity = -1 * maxVelocity;
 		}
+		velocity *= 0.99f;
+		spin (velocity * Time.deltaTime);
 	}
 
 	public override void set(Day d) {
-		reverse ();
-		rotate (d.WindDirection);
-		dir = d.WindDirection;
+		rotateTo (d.WindDirection);
 	}
 
-	int directionToDegrees(Day.windDirection r) {
+	float directionToDegrees(Day.windDirection r) {
 		switch (r) {
 			case Day.windDirection.N:
 				return 0;
@@ -52,15 +61,21 @@ public class WeatherVane : Device {
 				return 0;
 		}
 	}
-
-	void reverse () {
-		rotate (-1 * directionToDegrees (dir));
+		
+	void rotateTo (Day.windDirection r) {
+		rotateTo (directionToDegrees (r));
 	}
 
-	void rotate (Day.windDirection r) {
-		rotate (directionToDegrees (r));
+	void rotateTo (float degrees) {
+		targetDirection = degrees;
 	}
-	void rotate (int degrees) {
-		gameObject.transform.RotateAround (gameObject.transform.position,new Vector3(0,1),degrees);
+
+	void rotateBy (float degrees) {
+		targetDirection += degrees;
+	}
+
+	void spin (float degrees) {
+		gameObject.transform.RotateAround (gameObject.transform.position, new Vector3 (0, 1, 0), degrees);
+		currentDirection = (currentDirection + degrees) % 360;
 	}
 }
