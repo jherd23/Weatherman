@@ -34,31 +34,22 @@ public class WeatherVane : Device {
 		switch (r) {
 			case Day.windDirection.N:
 				return 0;
-				break;
 			case Day.windDirection.NE:
 				return 45;
-				break;
 			case Day.windDirection.E:
 				return 90;
-				break;
 			case Day.windDirection.SE:
 				return 135;
-				break;
 			case Day.windDirection.S:
 				return 180;
-				break;
 			case Day.windDirection.SW:
 				return 215;
-				break;
 			case Day.windDirection.W:
 				return 270;
-				break;
 			case Day.windDirection.NW:
 				return 315;
-				break;
 			default:
 				return 0;
-				break;
 		}
 	}
 

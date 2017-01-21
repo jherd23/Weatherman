@@ -61,3 +61,5 @@
 /Users/Sage/Weatherman/Temp/bin/Debug/Mono.Cecil.Mdb.dll
 /Users/Sage/Weatherman/Temp/bin/Debug/Assembly-CSharp.dll.mdb
 /Users/Sage/Weatherman/Temp/bin/Debug/Assembly-CSharp.dll
+/Users/jackherd/Documents/Weatherman/Weatherman/Temp/bin/Debug/UnityEngine.Advertisements.dll
+/Users/jackherd/Documents/Weatherman/Weatherman/Temp/bin/Debug/UnityEngine.Purchasing.dll

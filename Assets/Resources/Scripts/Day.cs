@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Day : MonoBehaviour {
+public class Day {
 
 	// this class contains all the weather properties for a day
 
