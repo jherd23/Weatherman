@@ -1,0 +1,5 @@
+Weatherman,
+
+Due to new record-keeping requirements passed by parliament, 
+all weather stations now are required by law to provide the Royal Crown 
+with weekly predictions on ____________ and ____________ data. 
