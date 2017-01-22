@@ -17,8 +17,12 @@ public class StormGlass : Device {
 	}
 
 	public override void set(Day d) {
+		set (d.Pressure);
+	}
+
+	public void set(float f) {
 		ParticleSystem.MainModule main = part.main;
-		main.startLifetime = ((11.6f - 1.17f) / 10) * (d.Pressure - 95) + 1.17f;
-		main.maxParticles = 100 * (int)(d.Pressure - 95);
+		main.startLifetime = ((11.6f - 1.17f) / 10) * (f - 95) + 1.17f;
+		main.maxParticles = 100 * (int)(f - 95);
 	}
 }
