@@ -23,12 +23,18 @@ public class CameraMovement : MonoBehaviour {
 	private float targetFOV;
 	private float initFOV;
 
+	public Button b;
+
 
 	// Use this for initialization
 	void Start () {
 		initpos = transform.position;
 		initFOV = Camera.main.fieldOfView;
 		initRotation = transform.localEulerAngles;
+
+		targetpos = initpos;
+		targetFOV = initFOV;
+
 
 		resetView ();
 	}
@@ -38,14 +44,19 @@ public class CameraMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update() {
 
+		if(targetpos == initpos && targetFOV == initFOV){
+			b.image.enabled = false;
+			b.GetComponentInChildren<Text> ().enabled = false;
+		}
+
 		if (Input.GetMouseButtonDown(0)) {
 
 			RaycastHit hit;
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-			if (Physics.Raycast(ray, out hit) && (hit.transform.parent != null)) {
+			if (Physics.Raycast(ray, out hit) && (hit.transform.parent != null) ) {
 				obj = GameObject.Find(hit.transform.parent.name);
-				Debug.Log (obj.name);
+				Debug.Log ("ugh");
 				if (obj.name == "rainGauge") {
 					targetpos = new Vector3 (obj.transform.position.x, obj.transform.position.y + 500, transform.position.z);
 				} else if (obj.name == "anemometer") {
@@ -93,7 +104,8 @@ public class CameraMovement : MonoBehaviour {
 	public void resetView() {
 		targetpos = initpos;
 		targetFOV = initFOV;
-
+		b.image.enabled = true;
+		b.GetComponentInChildren<Text> ().enabled = true;
 	}
 
 	public void focusUI(string name) {

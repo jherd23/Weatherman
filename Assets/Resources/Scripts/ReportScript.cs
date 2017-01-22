@@ -7,107 +7,222 @@ using UnityEngine.UI;
 
 public class ReportScript : MonoBehaviour {
 
-    private bool[] Predictions;
+	private bool[] Predictions;
 
-    public int wellbeing = 100;
+	public int wellbeing = 100;
 
-    public GameObject WindStrength;
-    public GameObject Temperature;
-    public GameObject Humidity;
-    public GameObject Pressure;
+	public GameObject WindStrength;
+	public GameObject Temperature;
+	public GameObject Humidity;
+	public GameObject Pressure;
 
-    public GameObject WindType;
-    public GameObject HeatLevel;
-    public GameObject SeaState;
-    public GameObject Precipitation;
-    public GameObject CloudCover;
-    public GameObject SkyColor;
-    public GameObject PressureLevels;
+	public GameObject WindType;
+	public GameObject HeatLevel;
+	public GameObject SeaState;
+	public GameObject Precipitation;
+	public GameObject CloudCover;
+	public GameObject SkyColor;
+	public GameObject PressureLevels;
 
-    public GameObject FogToggle;
-    public GameObject DisasterToggle;
+	public GameObject FogToggle;
+	public GameObject DisasterToggle;
 
-    public GameObject WindDirection;
+	public GameObject WindDirection;
+	public WeatherController WC;
 
-    public Button Submit;
-
-
-    private GameObject[] formElements;
-
-    private Day today;
+	public Button Submit;
 
 
-    // Use this for initialization
-    void Start () {
-        // temperature, temperature range, anomaly, pressure, pressure range, cloud cover, fog, humidity, sky color, precipitation, wind type, wind speed, wind direction, sea state
-        formElements = new GameObject[] { Temperature, HeatLevel, DisasterToggle, Pressure, PressureLevels, CloudCover, FogToggle, Humidity, SkyColor,
-            Precipitation, WindType, WindStrength, WindDirection, SeaState};
+	private GameObject[] formElements;
 
-        Predictions = new bool[] { false, true, true, true, true, false, false, false, true, true, true, true, true, true };
+	private Day today;
 
-        Button btn = Submit.GetComponent<Button>();
-        btn.onClick.AddListener(TaskOnClick);
+	public int wellbeingMod;
 
-        MakeForm(Predictions);
-    }
+	bool haveMadeVariables = false;
 
-    void MakeForm(bool[] Predictions) {
-        for (int i = 0; i < 14; i++) {
-            //Debug.Log(i);
-            formElements[i].SetActive(Predictions[i]);
-            //Debug.Log(Predictions[i]);
-        }
-    }
+	int ourDay = 0;
+	public float ourTemp;
+	public int ourTempRange;
+	public bool ourAnomaly;
+	public float ourPressure;
+	public int ourPressureLevels;
+	public int ourCloudCover;
+	public bool ourFoggle;
+	public float ourHumidity;
+	public int ourSkyColor;
+	public int ourPrecipitation;
+	public int ourWindType;
+	public float ourWindStrength;
+	public int ourWindDirection;
+	public int ourSeaState;
 
-    void TaskOnClick() {
-        Debug.Log("Button Click");
-        MakeForm(Predictions);
-    }
 
-    void UpdateDay(Day newDay) {
-        today = newDay;
-    }
 
-    void Verify() {
-        if (Predictions[0]) {
-            InputField tempInput = Temperature.GetComponent<InputField>();
-            Text tempText = tempInput.textComponent;
-            wellbeing -= (int) ( ( Mathf.Abs(50 - Convert.ToInt32(tempText.text) )-10)/1.5f );
-        }
+	// Use this for initialization
+	void Start () {
+		// temperature, temperature range, anomaly, pressure, pressure range, cloud cover, fog, humidity, sky color, precipitation, wind type, wind speed, wind direction, sea state
+		formElements = new GameObject[] { Temperature, HeatLevel, DisasterToggle, Pressure, PressureLevels, CloudCover, FogToggle, Humidity, SkyColor,
+			Precipitation, WindType, WindStrength, WindDirection, SeaState};
 
-        if (Predictions[1]) {
-            //wellbeing -= (int) (Mathf.Abs(//integer index of current enum value of Temperature Range\\ - HeatLevel.value)-3)*4;
-        }
+		Predictions = new bool[] { false, true, true, true, true, false, false, false, true, true, true, true, true, true };
 
-        if (Predictions[2]) {
-            //if (Precipitation == typhoon) {wellbeing += 25;}
-            //else {wellbeing -= 35;}
-        }
+		Button btn = Submit.GetComponent<Button>();
+		btn.onClick.AddListener(TaskOnClick);
 
-        if (Predictions[3]) {
-            //wellbeing -= (int) (Mathf.Abs(Pressure - PressureInput.text)-4)*4;
-        }
+		MakeForm(Predictions);
+	}
 
-        if (Predictions[4]) {
-            //wellbeing -= (int) (Mathf.Abs(//integer index of current enum value of Pressure Range\\ - PressureLevels.value)-2)*6;
-        }
+	void Update()
+	{
+		if(WC.currentDay != ourDay)
+		{
+			haveMadeVariables = false;
+			ourDay = WC.currentDay;
+		}
+		if(!(haveMadeVariables))
+		{
+			ourTemp = WC.days[ourDay].Temperature;
+			ourTempRange = (int) WC.days[ourDay].Temprange;
+			ourAnomaly = WC.days[ourDay].Anomaly;
+			ourPressure = WC.days[ourDay].Pressure;
+			ourPressureLevels = (int)WC.days[ourDay].PressureRange;
+			ourCloudCover = (int)WC.days[ourDay].Cloudcover;
+			ourFoggle = WC.days[ourDay].Fog;
+			ourHumidity = WC.days[ourDay].Humidity;
+			ourSkyColor = (int)WC.days[ourDay].Skycolor;
+			ourPrecipitation = (int)WC.days[ourDay].Precipitation;
+			ourWindType = (int)WC.days[ourDay].Windtype;
+			ourWindStrength = WC.days[ourDay].WindSpeed;
+			ourWindDirection = (int)WC.days[ourDay].WindDirection;
+			ourSeaState = (int)WC.days[ourDay].Seastate;
 
-        if (Predictions[5]) { }
+		}
+	}
 
-        if (Predictions[6]) { }
+	void MakeForm(bool[] Predictions) {
+		for (int i = 0; i < 14; i++) {
+			//Debug.Log(i);
+			formElements[i].SetActive(Predictions[i]);
+			//Debug.Log(Predictions[i]);
+		}
+	}
 
-        if (Predictions[7]) { }
+	void TaskOnClick() {
+		Verify();
+	}
 
-        if (Predictions[8]) { }
+	void UpdateDay(Day newDay) {
 
-        if (Predictions[9]) { }
+		WC.incrementDay();
+		today = newDay;
+	}
 
-        if (Predictions[10]) { }
+	int Verify() {
+		wellbeingMod = 0;
+		if (Predictions[0]) {
+			InputField tempInput = Temperature.GetComponent<InputField>();
+			Text tempText = tempInput.textComponent;
+			wellbeingMod -= (int) ( ( Mathf.Abs(ourTemp - Convert.ToInt32(tempText.text) )-10)/1.5f );
+		}
 
-        if (Predictions[11]) { }
+		if (Predictions[1]) {
+			Dropdown tempRange = HeatLevel.GetComponent<Dropdown>();
+			int choice = tempRange.value;
+			wellbeingMod -= (int)(Mathf.Abs(ourTempRange - choice) - 3) * 2;
 
-        if (Predictions[12]) { }
 
-        if (Predictions[13]) { }
-    }
+		}
+
+		if (Predictions[2]) {
+			Toggle disasterToggle = DisasterToggle.GetComponent<Toggle>();
+			bool choice = disasterToggle.isOn;
+			if (choice == ourAnomaly)
+			{
+				wellbeingMod += 25;
+			}
+			else {
+				wellbeingMod -= 40;
+			}
+		}
+
+		if (Predictions[3]) {
+			InputField pressInput = Pressure.GetComponent<InputField>();
+			Text pressText = pressInput.textComponent;
+			wellbeingMod -= (int)(Math.Abs(ourPressure - Convert.ToInt32(pressText.text))-4)*2;
+		}
+
+		if (Predictions[4])
+		{
+			Dropdown pressRange = PressureLevels.GetComponent<Dropdown>();
+			int choice = pressRange.value;
+			wellbeingMod -= (int)(Mathf.Abs(ourPressureLevels - choice) - 1) * 5;
+		}
+
+		if (Predictions[5])
+		{
+			Dropdown cloudRange = CloudCover.GetComponent<Dropdown>();
+			int choice = cloudRange.value;
+			wellbeingMod -= (int)(Mathf.Abs(ourCloudCover - choice) - 1) * 3;
+		}
+
+		if (Predictions[6])
+		{
+			Toggle fogToggle = DisasterToggle.GetComponent<Toggle>();
+			bool choice = fogToggle.isOn;
+			if (choice == ourFoggle)
+			{
+				wellbeingMod += 5;
+			}
+			else {
+				wellbeingMod -= 10;
+			}
+		}
+
+		if (Predictions[7]) {
+			InputField humidInput = Humidity.GetComponent<InputField>();
+			Text humidText = humidInput.textComponent;
+			wellbeingMod -= (int) ((Math.Abs(ourHumidity - Convert.ToInt32(humidText.text)) - 10)/1.5f);
+		}
+
+		if (Predictions[8]) {
+			Dropdown skyRange = SkyColor.GetComponent<Dropdown>();
+			int choice = skyRange.value;
+			wellbeingMod -= (int)(Mathf.Abs(ourSkyColor - choice) - 1) * 3;
+		}
+
+		if (Predictions[9])
+		{
+			Dropdown precip = Precipitation.GetComponent<Dropdown>();
+			int choice = precip.value;
+			wellbeingMod -= (int)(Mathf.Abs(ourPrecipitation - choice) - 1) * 15;
+		}
+
+		if (Predictions[10]) {
+			Dropdown windT = WindType.GetComponent<Dropdown>();
+			int choice = windT.value;
+			wellbeingMod -= (int)(Mathf.Abs(ourWindType - choice) - 3) * 5;
+		}
+
+		if (Predictions[11])
+		{
+			InputField windInput = WindStrength.GetComponent<InputField>();
+			Text windText = windInput.textComponent;
+			wellbeingMod -= (int)((Math.Abs(ourWindStrength - Convert.ToInt32(windText.text)) - 5) * 4);
+		}
+
+		if (Predictions[12]) {
+			Dropdown windDT = WindDirection.GetComponent<Dropdown>();
+			int choice = windDT.value;
+			wellbeingMod -= (int)(Mathf.Abs(ourWindDirection - choice) - 4) * 2;
+		}
+
+		if (Predictions[13]) {
+			Dropdown seaT = SeaState.GetComponent<Dropdown>();
+			int choice = seaT.value;
+			wellbeingMod -= (int)(Mathf.Abs(ourSeaState - choice) - 3) * 7;
+		}
+
+		return wellbeingMod;
+	}
 }
