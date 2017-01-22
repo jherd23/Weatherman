@@ -20,14 +20,16 @@ public class CameraMovement : MonoBehaviour {
 		if (Input.GetMouseButtonDown(0)) {
 			RaycastHit hit;
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			if (Physics.Raycast(ray, out hit)) {
+			if (Physics.Raycast(ray, out hit) && (hit.transform.parent != null)) {
 				obj = GameObject.Find(hit.transform.parent.name);
-				if (transform.position.x > obj.transform.position.x) {
-					dir = false;
-				} else { 
-					dir = true;
+				if (obj.CompareTag ("clickable")) {
+					if (transform.position.x > obj.transform.position.x) {
+						dir = false;
+					} else { 
+						dir = true;
+					}
+					moving = true;
 				}
-				moving = true;
 			}
 		}
 

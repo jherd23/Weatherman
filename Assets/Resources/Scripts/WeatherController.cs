@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class WeatherController : MonoBehaviour {
 
-	public int daysPerSeason;
+/* 	public int daysPerSeason;
 
 	public int numberOfSeasons;
 
@@ -29,7 +29,7 @@ public class WeatherController : MonoBehaviour {
 	 * 14) Sea State
 	*/
 
-	// Use this for initialization
+	/*/ Use this for initialization
 	void Start () {
 		Random rand = Random();
 		float instability = 0;
@@ -188,5 +188,5 @@ public class WeatherController : MonoBehaviour {
 	//			}
 	//		}
 	//	}
-
+		*/
 }

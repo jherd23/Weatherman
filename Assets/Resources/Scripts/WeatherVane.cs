@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class WeatherVane : Device {
 
@@ -13,6 +14,10 @@ public class WeatherVane : Device {
 
 	public Slider slider;
 
+	float squeakCooldown = 2;
+
+	public AudioSource aud;
+
 	// Use this for initialization
 	void Start () {
 		targetDirection = 90;
@@ -23,6 +28,7 @@ public class WeatherVane : Device {
 	
 	// Update is called once per frame
 	void Update () {
+		squeakCooldown -= Time.deltaTime;
 		if (slider.value > 700) {
 			float del = targetDirection - currentDirection;
 			float acceleration = 2f * del;
@@ -34,6 +40,10 @@ public class WeatherVane : Device {
 			}
 		}
 		velocity *= 0.99f;
+		if (velocity > 30 && squeakCooldown < 0) {
+			aud.Play ();
+			squeakCooldown = 2;
+		}
 		spin (velocity * Time.deltaTime);
 	}
 
