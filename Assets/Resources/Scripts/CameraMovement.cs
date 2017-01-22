@@ -9,8 +9,6 @@ public class CameraMovement : MonoBehaviour {
 	private Vector3 rotVelocity = new Vector3 (1, 0, 0);
 	private float fovVelocity = 0.2f;
 
-	public Button b;
-
 	private bool dir;
 	private bool moving;
 	private GameObject obj;
@@ -40,14 +38,6 @@ public class CameraMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update() {
 
-		if (targetpos == initpos && targetFOV == initFOV) {
-			b.image.enabled = false;
-			b.GetComponentInChildren<Text> ().enabled = false;
-		} else {
-			b.image.enabled = true;
-			b.GetComponentInChildren<Text> ().enabled = true;
-		}
-
 		if (Input.GetMouseButtonDown(0)) {
 
 			RaycastHit hit;
@@ -55,7 +45,7 @@ public class CameraMovement : MonoBehaviour {
 
 			if (Physics.Raycast(ray, out hit) && (hit.transform.parent != null)) {
 				obj = GameObject.Find(hit.transform.parent.name);
-
+				Debug.Log (obj.name);
 				if (obj.name == "rainGauge") {
 					targetpos = new Vector3 (obj.transform.position.x, obj.transform.position.y + 500, transform.position.z);
 				} else if (obj.name == "anemometer") {
