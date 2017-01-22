@@ -1,13 +1,21 @@
 while (1)
 {	
+<<<<<<< HEAD
 	if (`filetest -r "/Users/Sanjana/GitHub/Weatherman/Temp/CommandPipe"`)
+=======
+	if (`filetest -r "/Users/jackherd/Documents/Weatherman/Weatherman/Temp/CommandPipe"`)
+>>>>>>> ede1f29ab8f91a183d7845b91fc7321a0cd8b52d
 	{
 		$exportNormals = 0;
 		$exportTangents = 0;
 		$bakeCommand = "";
 	
 		// Parse settings
+<<<<<<< HEAD
 		$waitpipe = `fopen "/Users/Sanjana/GitHub/Weatherman/Temp/CommandPipe" "r"`;
+=======
+		$waitpipe = `fopen "/Users/jackherd/Documents/Weatherman/Weatherman/Temp/CommandPipe" "r"`;
+>>>>>>> ede1f29ab8f91a183d7845b91fc7321a0cd8b52d
 		$filename = `fgetline $waitpipe`;
 		
 		for ($i = 0; $i < 3; ++$i) 
@@ -136,7 +144,11 @@ while (1)
 				FBXExportShowUI -v false;
 
 				print "Before fbx export\n";
+<<<<<<< HEAD
 				FBXExport -f "/Users/Sanjana/GitHub/Weatherman/Temp/ExportedFBXFile.fbx";
+=======
+				FBXExport -f "/Users/jackherd/Documents/Weatherman/Weatherman/Temp/ExportedFBXFile.fbx";
+>>>>>>> ede1f29ab8f91a183d7845b91fc7321a0cd8b52d
 				print "after fbx export\n";
 			}
 			else
@@ -145,7 +157,11 @@ while (1)
 			// TODO: We should use sysFile, so we don't have to have two separate mel scripts for OSX/Windows
 			system ("del \"!//UNITY_TEMP_WIN//!\\CommandPipe\"");
 
+<<<<<<< HEAD
 			$donepipe = `fopen "/Users/Sanjana/GitHub/Weatherman/Temp/SyncPipe" "w"`;
+=======
+			$donepipe = `fopen "/Users/jackherd/Documents/Weatherman/Weatherman/Temp/SyncPipe" "w"`;
+>>>>>>> ede1f29ab8f91a183d7845b91fc7321a0cd8b52d
 			fwrite $donepipe "Done";
 			fclose $donepipe;
 			print "Finished maya loading and fbx conversion \n";

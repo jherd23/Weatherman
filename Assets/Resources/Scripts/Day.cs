@@ -21,7 +21,7 @@ public class Day {
 	public skyColor Skycolor;
 	public precipitation Precipitation;
 	public windType Windtype;
-	float WindSpeed;
+	public float WindSpeed;
 	public seaState Seastate;
 	public windDirection WindDirection;
 
