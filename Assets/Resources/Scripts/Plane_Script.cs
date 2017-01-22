@@ -18,7 +18,7 @@ public class Plane_Script : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.A)) {
+		if (Input.GetKeyDown (KeyCode.Space)) {
 			Debug.Log ("changing the day");
 			ChangeDay ();
 		}

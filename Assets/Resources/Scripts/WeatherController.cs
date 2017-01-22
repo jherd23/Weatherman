@@ -34,45 +34,76 @@ public class WeatherController : MonoBehaviour {
 	 * 14) Sea State
 	*/
 
+	Day.cloudCover c;
+	Day.skyColor sc;
+	Day.precipitation prc;
+	bool fog = false;
+	Day.windType wt;
+	Day.seaState st;
+	Day.windDirection wd;
+	Day.pressureRange p;
+	Day.temperatureRange tr;
+
+	float avgTemp = 55;
+	float ampTemp = 30;
+	float varianceTemp = 2;
+
+	float avgPres  = 100;
+	float ampPres = 3;
+
+	float avgHum = 50;
+	float ampHum = 45;
+
+	float Temperature = 50;
+	float Pressure = 100;
+	float Humidity = 70;
+
+	float windSpeed = 0;
+	float windDirection = 0;
+	int windSign = 1;
+	float cloudThickness = 0;
+	float instability = 0;
+	float tempSubtractFromNext = 0;
+	int totDays = 72;
+	int daysPerYear = 4 * 6;
+	float randomStagger;
+
 	// Use this for initialization
 	void Start () {
 		days = new Day[daysPerSeason * numberOfSeasons];
 		predictions = new bool[72][];
-		Day.cloudCover c;
-		Day.skyColor sc;
-		Day.precipitation prc;
-		bool fog = false;
-		Day.windType wt;
-		Day.seaState st;
-		Day.windDirection wd;
-		Day.pressureRange p;
-		Day.temperatureRange tr;
-		float instability = 0;
-		float tempSubtractFromNext = 0;
-		int totDays = numberOfSeasons * daysPerSeason;
-		int daysPerYear = 4 * daysPerSeason;
+		randomStagger = Random.Range(-Mathf.PI,Mathf.PI);
 
 		//sinusoidal model
-		float avgTemp = 55;
-		float ampTemp = 30;
-		float varianceTemp = 2;
-
-		float avgPres  = 100;
-		float ampPres = 3;
-
-		float avgHum = 50;
-		float ampHum = 45;
-
-		float randomStagger = Random.Range(-Mathf.PI,Mathf.PI);
-		float Temperature = 50;
-		float Pressure = 100;
-		float Humidity = 70;
-
-		float windSpeed = 0;
-		float windDirection = 0;
-		int windSign = 1;
-		float cloudThickness = 0;
+		New();
 	
+	}
+
+	public void New(){
+
+		avgTemp = 55;
+		ampTemp = 30;
+		varianceTemp = 2;
+
+		avgPres  = 100;
+		ampPres = 3;
+
+		avgHum = 50;
+		ampHum = 45;
+
+		Temperature = 50;
+		Pressure = 100;
+		Humidity = 70;
+
+		windSpeed = 0;
+		windDirection = 0;
+		windSign = 1;
+		cloudThickness = 0;
+		instability = 0;
+		tempSubtractFromNext = 0;
+		totDays = 72;
+		daysPerYear = 4 * 6;
+
 		for (int i = 0; i < totDays; i++) {
 			//wesley's math
 			instability = (float)i * 10 / totDays;
@@ -184,7 +215,7 @@ public class WeatherController : MonoBehaviour {
 
 
 			//Day(Temperature, Pressure, pressureRange p, cloudCover c, bool fog, float h, skyColor sc, precipitation prc, windType wt, float ws, 
-				//seaState st,tr,wd)
+			//seaState st,tr,wd)
 
 			if (windSpeed < 4 &&  (prc == Day.precipitation.rain || prc == Day.precipitation.storm))
 			{
@@ -388,13 +419,15 @@ public class WeatherController : MonoBehaviour {
 			incrementDay ();
 		}
 	}
-	void setInstruments(Day d) {
+
+
+	public void setInstruments(Day d) {
 		for (int i = 0; i < devices.Length; i++) {
 			if (d.season >= devices[i].unlockSeason) {
 				devices [i].set (d);
-				}
 			}
 		}
+	}
 		
 	void incrementDay(){
 		currentDay++;

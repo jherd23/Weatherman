@@ -12,13 +12,22 @@ public class ButtonControl : MonoBehaviour {
 	public bool gamePaused = false;
 	public bool onStart = true;
 	public int saved = 0;
+
+	WeatherController WC;
 	// Use this for initialization
 	void Start () {
 		saved = PlayerPrefs.GetInt ("saved", 0);
+
+		Debug.Log (saved);
+
 		button4.gameObject.SetActive (false);
 		if (saved == 0) {
 			button3.gameObject.SetActive (false);
+		} else {
+			button3.gameObject.SetActive (true);
 		}
+
+		WC = GameObject.Find ("WeatherAndSaveController").GetComponent<WeatherController> () as WeatherController;
 	}
 	
 	// Update is called once per frame
@@ -49,5 +58,18 @@ public class ButtonControl : MonoBehaviour {
 		onStart = false;
 		button2.gameObject.SetActive (false);
 		button3.gameObject.SetActive (false);
+
+	}
+
+	public void Resume() {
+		ExitStartMenu ();
+		GameObject.Find ("WeatherAndSaveController").GetComponent<SaveController> ().first = true;
+	}
+
+	public void New(){
+		ExitStartMenu ();
+		WC.New();
+		WC.win.setExterior (WC.days [0]);
+		WC.setInstruments (WC.days[0]);
 	}
 }

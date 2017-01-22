@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Day {
+[System.Serializable]
+public class Day  {
 
 	// this class contains all the weather properties for a day
 

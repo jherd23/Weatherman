@@ -35,7 +35,6 @@ public class CameraMovement : MonoBehaviour {
 	void Update() {
 
 		if (targetpos == initpos && targetFOV == initFOV) {
-			Debug.Log ("zoomed out");
 			b.image.enabled = false;
 			b.GetComponentInChildren<Text> ().enabled = false;
 		} else {
