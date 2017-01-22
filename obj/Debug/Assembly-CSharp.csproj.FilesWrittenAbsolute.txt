@@ -86,3 +86,5 @@
 /Users/nathanielsaxe/Weatherman/Temp/bin/Debug/Assembly-CSharp.dll
 /Users/nathanielsaxe/Weatherman/Temp/bin/Debug/UnityEngine.Advertisements.dll
 /Users/nathanielsaxe/Weatherman/Temp/bin/Debug/UnityEngine.Purchasing.dll
+/Users/Hasan/Documents/Weatherman/Temp/bin/Debug/UnityEngine.Advertisements.dll
+/Users/Hasan/Documents/Weatherman/Temp/bin/Debug/UnityEngine.Purchasing.dll
