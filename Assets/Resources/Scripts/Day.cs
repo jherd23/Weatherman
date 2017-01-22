@@ -16,7 +16,7 @@ public class Day {
 	public float Pressure;
 	public pressureRange PressureRange;
 	public cloudCover Cloudcover;
-	bool Fog;
+	public bool Fog;
 	public float Humidity;
 	public skyColor Skycolor;
 	public precipitation Precipitation;
