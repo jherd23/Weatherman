@@ -11,7 +11,10 @@ public class WeatherController : MonoBehaviour {
 
 	public Day[] days; // contains weather conditions for each day
 
-	public bool[][] predictions; // contains bools for prediction required by each day
+	public bool[][] predictions;
+
+	public int currentDay = 0;
+	// contains bools for prediction required by each day
 
 	/* 1) Temperature (float)
 	 * 2) Temperature Range
@@ -67,10 +70,7 @@ public class WeatherController : MonoBehaviour {
 		float windDirection = 0;
 		int windSign = 1;
 		float cloudThickness = 0;
-
-
-
-		//days = generateDays() //TODO: make that
+	
 		for (int i = 0; i < totDays; i++) {
 			//wesley's math
 			instability = (float)i * 10 / totDays;
@@ -78,9 +78,9 @@ public class WeatherController : MonoBehaviour {
 			Temperature = avgTemp + ampTemp * Mathf.Sin(((float) i * 2 * Mathf.PI / (float) daysPerYear) + (Mathf.PI / 8)) + (ampTemp / 10)*Mathf.Sin((float) i * Mathf.PI / ((daysPerYear / 16)) + (randomStagger)) + Random.Range(-varianceTemp, varianceTemp);
 			Temperature -= tempSubtractFromNext;
 			float old_pressure = Pressure;
-			Pressure = avgPres + ampPres * Mathf.Sin((float) (i+2) * Mathf.PI / (daysPerYear / 8) + randomStagger) + (Temperature - old_temp) / (1440 / daysPerYear);
+			Pressure = avgPres + ampPres * Mathf.Sin((float) (i+2) * Mathf.PI / (daysPerYear / 8f) + randomStagger) + (Temperature - old_temp) / (1440 / daysPerYear);
 			Humidity = 
-				avgHum + ampHum * Mathf.Sin ((float)(i + 5) * Mathf.PI / (daysPerYear / 33) + randomStagger) +
+				avgHum + ampHum * Mathf.Sin ((float)(i + 5) * Mathf.PI / (daysPerYear / 33f) + randomStagger) +
 			30 * Mathf.Sin ((float)(i - 5) * Mathf.PI / (daysPerYear / 64f) + randomStagger) +
 			(((float)daysPerYear / 72) * Mathf.Abs (old_temp - Temperature) * (old_temp - Temperature)) +
 			((float)daysPerYear / 36) * (old_pressure - Pressure) * (old_pressure - Pressure) +
@@ -141,7 +141,7 @@ public class WeatherController : MonoBehaviour {
 				if(Temperature < 35)
 				{
 					sc = Day.skyColor.white;
-					if (Pressure < 97)
+					if (Pressure < 97.4)
 					{
 						cloudThickness = 1;
 						prc = Day.precipitation.blizzard;
@@ -151,12 +151,12 @@ public class WeatherController : MonoBehaviour {
 						prc = Day.precipitation.snow;
 					}
 				}
-				else if (Pressure < 95){
+				else if (Pressure < 97){
 					sc = Day.skyColor.grey;
 					cloudThickness = 1;
 					prc = Day.precipitation.typhoon;
 				}
-				else if (Pressure < 97)
+				else if (Pressure < 98)
 				{
 					sc = Day.skyColor.grey;
 					cloudThickness = 0.9f;
@@ -255,10 +255,10 @@ public class WeatherController : MonoBehaviour {
 				wd = Day.windDirection.N;
 			}
 			//set pressure range
-			if(Pressure < 98){
+			if(Pressure < 98.3){
 				p = Day.pressureRange.low;
 			}
-			else if(Pressure < 102){
+			else if(Pressure < 101.6){
 				p = Day.pressureRange.moderate;
 			}
 			else{
@@ -388,12 +388,22 @@ public class WeatherController : MonoBehaviour {
 
 	}
 
+	void Update()
+	{
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			incrementDay ();
+		}
+	}
 	void setInstruments(Day d) {
-			for (int i = 0; i < devices.Length; i++) {
+		for (int i = 0; i < devices.Length; i++) {
 			if (d.season >= devices[i].unlockSeason) {
 				devices [i].set (d);
 				}
 			}
 		}
-
+		
+	void incrementDay(){
+		currentDay++;
+		setInstruments (days[currentDay]);
+	}
 }

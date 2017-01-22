@@ -65,6 +65,7 @@ public class Day {
 
 	{
 		this.Index = index;
+		this.season = index / 6;
 		this.Temperature = temp;
 		this.Pressure = pr;
 		this.PressureRange = p;
@@ -79,6 +80,4 @@ public class Day {
 		this.Temprange = tr;
 		this.WindDirection = wd;
 	}
-		
-
 }

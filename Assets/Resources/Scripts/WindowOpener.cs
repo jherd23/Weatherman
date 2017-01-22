@@ -11,6 +11,10 @@ public class WindowOpener : MonoBehaviour {
 	public bool Fair;
 	public bool Rain;
 
+	public GameObject rainer;
+
+	float lastPos;
+	bool moving;
 
 	public AudioMixerGroup roof;
 	public AudioMixerGroup roofParent;
@@ -34,11 +38,14 @@ public class WindowOpener : MonoBehaviour {
 	public AudioSource ausWindowSqueak;
 	public AudioSource ausWindowShut;
 
+
 	// Use this for initialization
 	void Start () {
 
 		//setup sources
-
+		lastPos = control.value;
+		ausWindowShut.volume = 1.0f;
+		moving = false;
 		DisableAll ();
 	}
 
@@ -68,16 +75,33 @@ public class WindowOpener : MonoBehaviour {
 		if (Rain) {
 			ausRoofRain.volume = 1.0f;
 			ausRain.volume = 1.0f;
+			rainer.GetComponent<SpriteRenderer> ().enabled = true;
 			if (Fair) {
 				rain.audioMixer.SetFloat ("volRainOutside", 9);
 				roof.audioMixer.SetFloat ("volRoof", 4);
+				rainer.GetComponent<SpriteRenderer> ().color = new Color (255f,255f,255f, 0.2f);
 			} else {
 				rain.audioMixer.SetFloat ("volRainOutside", 15);
 				roof.audioMixer.SetFloat ("volRoof", 14);
+				rainer.GetComponent<SpriteRenderer> ().color = new Color (255f, 255f,255f, 1f);
 			}
 		} else {
 			ausRoofRain.volume = 0.0f;
 			ausRain.volume = 0.0f;
+			rainer.GetComponent<SpriteRenderer> ().enabled = false;
+		}
+
+		if (control.value != lastPos) {
+			ausWindowSqueak.volume = 0.7f;
+			lastPos = control.value;
+			moving = true;
+		} else {
+			Debug.Log ("stopped");
+			ausWindowSqueak.volume = 0.0f;
+			if (lastPos < 550.0f && moving) {
+				ausWindowShut.Play ();
+			}
+			moving = false;
 		}
 	}
 
@@ -93,7 +117,6 @@ public class WindowOpener : MonoBehaviour {
 		ausRoofRain.volume = 0.0f;
 
 		ausWindowSqueak.volume = 0.0f;
-		ausWindowShut.volume = 0.0f;
 	}
 	//2102.1486 * log(x - 539) + 9000
 }
