@@ -21,8 +21,8 @@ public class Plane_Script : MonoBehaviour {
 			r.material.color = new Color (0.0f, 0.0f, 0.0f, r.material.color.a+0.5f * Time.deltaTime);
 		}
 
-		if (Input.GetKeyDown (KeyCode.Space)) {
+		/*if (Input.GetKeyDown (KeyCode.Space)) {
 			alphaTarget = 1 - alphaTarget;
-		}
+		}*/
 	}
 }

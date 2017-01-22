@@ -11,12 +11,12 @@ public class ButtonControl : MonoBehaviour {
 	public Button button4; //save and quit
 	public bool gamePaused = false;
 	public bool onStart = true;
-	public bool firstTime = true;
+	public int saved = 0;
 	// Use this for initialization
 	void Start () {
-		button1.gameObject.SetActive (false);
+		saved = PlayerPrefs.GetInt ("saved", 0);
 		button4.gameObject.SetActive (false);
-		if (firstTime) {
+		if (saved == 0) {
 			button3.gameObject.SetActive (false);
 		}
 	}
@@ -27,14 +27,14 @@ public class ButtonControl : MonoBehaviour {
 			if (Input.GetKeyDown (KeyCode.Escape)) {
 				if (gamePaused) {
 					button4.gameObject.SetActive (false);
-					if (!(firstTime)) {
+					if (saved == 1) {
 						button2.gameObject.SetActive (false);
 						button3.gameObject.SetActive (false);
 					}
 					gamePaused = false;
 				} else {
 					button4.gameObject.SetActive (true);
-					if (!(firstTime)) {
+					if (saved == 1) {
 						button2.gameObject.SetActive (true);
 						button3.gameObject.SetActive (true);
 					}

@@ -41,7 +41,7 @@ public class Day {
 	public enum pressureRange {low, moderate, high};
 	public enum cloudCover {sunny, partly_cloudy, overcast};
 	public enum skyColor {blue, grey, white};
-	public enum precipitation {none,rain,typhoon,storm,snow,blizzard};
+	public enum precipitation {none,rain,storm,typhoon,snow,blizzard};
 	public enum windType {calm, breeze, strong_breeze, moderate, gale, storm, hurricane}; // based loosely on beufort scale
 	public enum windDirection {N, S, E, W, NW, NE, SW, SE};
 	public enum seaState {calm, smooth, slight, moderate, rough, very_rough, phenomenal};

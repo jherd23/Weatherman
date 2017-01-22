@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraMovement : MonoBehaviour {
 
 	private Vector3 posVelocity = new Vector3 (50, 0, 0);
 	private float fovVelocity = 0.2f;
+
+	public Button b;
 
 	private bool dir;
 	private bool moving;
@@ -22,10 +25,23 @@ public class CameraMovement : MonoBehaviour {
 	void Start () {
 		initpos = transform.position;
 		initFOV = Camera.main.fieldOfView;
+
+		resetView ();
 	}
+
+
 
 	// Update is called once per frame
 	void Update() {
+
+		if (targetpos == initpos && targetFOV == initFOV) {
+			Debug.Log ("zoomed out");
+			b.image.enabled = false;
+			b.GetComponentInChildren<Text> ().enabled = false;
+		} else {
+			b.image.enabled = true;
+			b.GetComponentInChildren<Text> ().enabled = true;
+		}
 
 		if (Input.GetMouseButtonDown(0)) {
 			RaycastHit hit;
@@ -60,6 +76,7 @@ public class CameraMovement : MonoBehaviour {
 	public void resetView() {
 		targetpos = initpos;
 		targetFOV = initFOV;
+
 	}
 
 }
