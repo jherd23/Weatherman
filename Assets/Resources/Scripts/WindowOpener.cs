@@ -12,7 +12,12 @@ public class WindowOpener : MonoBehaviour {
 	public AudioMixerGroup rainOutside;
 	public AudioMixerGroup windOutside;
 	public AudioMixerGroup otherOutside;
-	AudioSource aus;
+	public AudioMixerGroup inside;
+	public AudioMixerGroup roof;
+
+	AudioSource ausOut;
+	AudioSource ausIn;
+	AudioSource ausRoof;
 
 	//gentle
 	AudioClip rain;
@@ -24,10 +29,36 @@ public class WindowOpener : MonoBehaviour {
 	AudioClip stormSea;
 	AudioClip stormWaves;
 
+	//roof
+	AudioClip roofRain;
+
+	//window itself
+	AudioClip windowSqueak;
+	AudioClip windowShut;
+
 	// Use this for initialization
 	void Start () {
-		aus = new AudioSource ();
-		aus.outputAudioMixerGroup = outside;
+		ausOut = new AudioSource ();
+		ausOut.outputAudioMixerGroup = outside;
+
+		ausIn = new AudioSource ();
+		ausIn.outputAudioMixerGroup = roof;
+
+		ausRoof = new AudioSource ();
+		ausRoof.outputAudioMixerGroup = inside;
+
+		rain = Resources.Load ("Audio/LightRain") as AudioClip;
+		waves = Resources.Load ("Audio/WavesGentle") as AudioClip;
+		wind = Resources.Load ("Audio/Wind+Crickets") as AudioClip;
+
+		windHowl = Resources.Load ("Audio/WindHowl") as AudioClip;
+		stormSea = Resources.Load ("Audio/StormSea") as AudioClip; 
+		stormWaves = Resources.Load ("Audio/Stormwaves") as AudioClip;
+
+		roofRain = Resources.Load ("Audio/RainRoof") as AudioClip;
+
+		windowSqueak = Resources.Load ("Audio/WindowSqueak") as AudioClip;
+		windowShut = Resources.Load ("Audio/WindowShut") as AudioClip;
 	}
 	
 	// Update is called once per frame
