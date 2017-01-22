@@ -53,6 +53,7 @@
      <Compile Include="Assets\Resources\Scripts\Day.cs" />
      <Compile Include="Assets\Resources\Scripts\Device.cs" />
      <Compile Include="Assets\Resources\Scripts\MouseSqueak.cs" />
+     <Compile Include="Assets\Resources\Scripts\RainGauge.cs" />
      <Compile Include="Assets\Resources\Scripts\StormGlass.cs" />
      <Compile Include="Assets\Resources\Scripts\Thermometer.cs" />
      <Compile Include="Assets\Resources\Scripts\WeatherController.cs" />
