@@ -11,6 +11,8 @@ public class WindowOpener : MonoBehaviour {
 	public bool Fair;
 	public bool Rain;
 
+	float lastPos;
+	bool moving;
 
 	public AudioMixerGroup roof;
 	public AudioMixerGroup roofParent;
@@ -34,11 +36,14 @@ public class WindowOpener : MonoBehaviour {
 	public AudioSource ausWindowSqueak;
 	public AudioSource ausWindowShut;
 
+
 	// Use this for initialization
 	void Start () {
 
 		//setup sources
-
+		lastPos = control.value;
+		ausWindowShut.volume = 1.0f;
+		moving = false;
 		DisableAll ();
 	}
 
@@ -79,6 +84,19 @@ public class WindowOpener : MonoBehaviour {
 			ausRoofRain.volume = 0.0f;
 			ausRain.volume = 0.0f;
 		}
+
+		if (control.value != lastPos) {
+			ausWindowSqueak.volume = 0.7f;
+			lastPos = control.value;
+			moving = true;
+		} else {
+			Debug.Log ("stopped");
+			ausWindowSqueak.volume = 0.0f;
+			if (lastPos < 550.0f && moving) {
+				ausWindowShut.Play ();
+			}
+			moving = false;
+		}
 	}
 
 	void DisableAll (){
@@ -93,7 +111,6 @@ public class WindowOpener : MonoBehaviour {
 		ausRoofRain.volume = 0.0f;
 
 		ausWindowSqueak.volume = 0.0f;
-		ausWindowShut.volume = 0.0f;
 	}
 	//2102.1486 * log(x - 539) + 9000
 }
