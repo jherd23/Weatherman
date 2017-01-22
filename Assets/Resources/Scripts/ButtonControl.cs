@@ -15,7 +15,6 @@ public class ButtonControl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		saved = PlayerPrefs.GetInt ("saved", 0);
-		button1.gameObject.SetActive (false);
 		button4.gameObject.SetActive (false);
 		if (saved == 0) {
 			button3.gameObject.SetActive (false);
