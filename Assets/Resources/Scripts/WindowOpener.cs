@@ -11,7 +11,6 @@ public class WindowOpener : MonoBehaviour {
 	public bool Fair;
 	public bool Rain;
 
-	public 
 
 	public AudioMixerGroup roof;
 	public AudioMixerGroup roofParent;
