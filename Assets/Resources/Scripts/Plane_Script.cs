@@ -7,22 +7,45 @@ public class Plane_Script : MonoBehaviour {
 
 	public float alphaTarget;
 	public MeshRenderer r;
+	public AudioSource aus;
+	float timer;
 
 	void Start () {
 		r = this.gameObject.GetComponent < MeshRenderer >();
 		alphaTarget = 1;
+		timer = 0.0f;
 	}
 
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetKeyDown (KeyCode.A)) {
+			Debug.Log ("changing the day");
+			ChangeDay ();
+		}
+
+		timer += 0.5f * Time.deltaTime;
+
+		if (timer > 1.5f) {
+			alphaTarget = 0;
+
+		}
+
+		if (timer > 3.0) {
+			r.enabled = false;
+		}
+
 		if (r.material.color.a >= alphaTarget) {
 			r.material.color = new Color (0.0f, 0.0f, 0.0f, r.material.color.a-0.5f * Time.deltaTime);
 		} else { 
 			r.material.color = new Color (0.0f, 0.0f, 0.0f, r.material.color.a+0.5f * Time.deltaTime);
 		}
+			
+	}
 
-		/*if (Input.GetKeyDown (KeyCode.Space)) {
-			alphaTarget = 1 - alphaTarget;
-		}*/
+	void ChangeDay(){
+		r.enabled = true;
+		timer = 0.0f;
+		alphaTarget = 1;
+		aus.Play ();
 	}
 }
