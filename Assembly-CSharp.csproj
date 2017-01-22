@@ -95,6 +95,7 @@
      <None Include="Assets\Resources\News\Positive Telegrams\Weatherman Positive 9.txt" />
      <None Include="Assets\Resources\News\Positive Telegrams\Weatherman Positive 3.txt" />
      <None Include="Assets\Resources\News\Random Telegrams\Weatherman 2.txt" />
+     <None Include="Assets\Resources\WeathermanRequest 1.txt" />
      <None Include="Assets\Resources\WeathermanTelegrams\Random Telegrams\RandomTelegram6.txt" />
      <None Include="Assets\Resources\WeathermanPositive8.txt" />
      <None Include="Assets\Resources\News\Random Telegrams\RandomTelegram10.txt" />
@@ -103,7 +104,10 @@
      <None Include="Assets\Resources\WeathermanTelegrams\NegativeTelegrams\WeathermanNegative9.txt" />
      <None Include="Assets\Resources\WeathermanNegative8.txt" />
      <None Include="Assets\Resources\WeathermanTelegrams\Positive Telegrams\Weatherman Positive 3.txt" />
+     <None Include="Assets\Resources\WeathermanRequest8.txt" />
+     <None Include="Assets\Resources\WeathermanRequest10.txt" />
      <None Include="Assets\Resources\News\Positive Telegrams\Weatherman Positive 4.txt" />
+     <None Include="Assets\Resources\WeathermanRequest2.txt" />
      <None Include="Assets\Resources\WeathermanTelegrams\Random Telegrams\RandomTelegram7.txt" />
      <None Include="Assets\Resources\WeathermanPositive5.txt" />
      <None Include="Assets\Resources\WeathermanTelegrams\Positive Telegrams\Weatherman Positive 9.txt" />
@@ -123,6 +127,7 @@
      <None Include="Assets\Resources\News\Random Telegrams\RandomTelegram7.txt" />
      <None Include="Assets\Resources\News\Positive Telegrams\Weatherman Positive 2.txt" />
      <None Include="Assets\Resources\WeathermanTelegrams\Random Telegrams\Weatherman 1.txt" />
+     <None Include="Assets\Resources\WeathermanRequest5.txt" />
      <None Include="Assets\Resources\WeathermanTelegrams\Requests\Weatherman Request 3.txt" />
      <None Include="Assets\Resources\WeathermanNegative6.txt" />
      <None Include="Assets\Resources\WeathermanNegative3.txt" />
@@ -135,10 +140,13 @@
      <None Include="Assets\Resources\WeathermanPositive2.txt" />
      <None Include="Assets\Resources\WeathermanTelegrams\Random Telegrams\RandomTelegram3.txt" />
      <None Include="Assets\Resources\WeathermanTelegrams\NegativeTelegrams\WeathermanNegative3.txt" />
+     <None Include="Assets\Resources\WeathermanRequest3.txt" />
      <None Include="Assets\Resources\News\Random Telegrams\Weatherman 4.txt" />
      <None Include="Assets\Resources\News\Negative Telegrams\WeathermanNegative5.txt" />
      <None Include="Assets\Resources\WeathermanTelegrams\Positive Telegrams\Weatherman Positive 10.txt" />
+     <None Include="Assets\Resources\WeathermanRequest9.txt" />
      <None Include="Assets\Resources\WeathermanTelegrams\Random Telegrams\RandomTelegram9.txt" />
+     <None Include="Assets\Resources\WeathermanRequest7.txt" />
      <None Include="Assets\Resources\WeathermanNegative2.txt" />
      <None Include="Assets\Resources\WeathermanTelegrams\Requests\Weatherman Request 1.txt" />
      <None Include="Assets\Resources\WeathermanTelegrams\NegativeTelegrams\WeathermanNegative1.txt" />
@@ -150,6 +158,7 @@
      <None Include="Assets\Resources\WeathermanNegative9.txt" />
      <None Include="Assets\Resources\News\Positive Telegrams\Weatherman Positive 5.txt" />
      <None Include="Assets\Resources\News\Random Telegrams\RandomTelegram4.txt" />
+     <None Include="Assets\Resources\WeathermanRequest4.txt" />
      <None Include="Assets\Resources\News\Random Telegrams\RandomTelegram5.txt" />
      <None Include="Assets\Resources\WeathermanTelegrams\Random Telegrams\Weatherman 4.txt" />
      <None Include="Assets\Resources\WeathermanPositive9.txt" />
@@ -157,6 +166,7 @@
      <None Include="Assets\Resources\WeathermanTelegrams\NegativeTelegrams\WeathermanNegative4.txt" />
      <None Include="Assets\Resources\WeathermanNegative1.txt" />
      <None Include="Assets\Resources\News\Random Telegrams\RandomTelegram3.txt" />
+     <None Include="Assets\Resources\WeathermanRequest6.txt" />
      <None Include="Assets\Resources\WeathermanPositive6.txt" />
      <None Include="Assets\Resources\WeathermanPositive7.txt" />
      <None Include="Assets\Resources\WeathermanTelegrams\Random Telegrams\RandomTelegram10.txt" />
