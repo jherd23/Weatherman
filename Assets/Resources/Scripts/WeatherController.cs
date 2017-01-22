@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class WeatherController : MonoBehaviour {
 
-/* 	public int daysPerSeason;
+	public int daysPerSeason;
 
 	public int numberOfSeasons;
 
@@ -29,12 +29,21 @@ public class WeatherController : MonoBehaviour {
 	 * 14) Sea State
 	*/
 
-	/*/ Use this for initialization
+	// Use this for initialization
 	void Start () {
-		Random rand = Random();
+		days = new Day[daysPerSeason * numberOfSeasons];
+		predictions = new bool[72][];
+		Day.cloudCover c;
+		Day.skyColor sc;
+		Day.precipitation prc;
+		bool fog = false;
+		Day.windType wt;
+		Day.seaState st;
+		Day.windDirection wd;
+		Day.pressureRange p;
+		Day.temperatureRange tr;
 		float instability = 0;
-		int numberOfSeasons = 8;
-		int daysPerSeason = 12;
+		float tempSubtractFromNext = 0;
 		int totDays = numberOfSeasons * daysPerSeason;
 		int daysPerYear = 4 * daysPerSeason;
 
@@ -49,43 +58,237 @@ public class WeatherController : MonoBehaviour {
 		float avgHum = 50;
 		float ampHum = 45;
 
-		float randomStagger = rand.Range(-Mathf.PI,Mathf.PI);
+		float randomStagger = Random.Range(-Mathf.PI,Mathf.PI);
 		float Temperature = 50;
 		float Pressure = 100;
+		float Humidity = 70;
+
+		float windSpeed = 0;
+		float windDirection = 0;
+		int windSign = 1;
+		float cloudThickness = 0;
 
 
 
 		//days = generateDays() //TODO: make that
-		for (int i = -6; i < totDays; i++) {
+		for (int i = 0; i < totDays; i++) {
+			//wesley's math
 			instability = (float)i * 10 / totDays;
-
 			float old_temp = Temperature;
-			Temperature = avgTemp + ampTemp * Mathf.sin((float) i * 2 * Mathf.PI / (float) daysPerYear) + (Mathf.PI / 8)) + (ampTemp / 10)*Mathf.sin((float) i * Mathf.PI / ((daysPerYear / 16)) + (randomStagger)) + rand.Range(-varianceTemp, varianceTemp);
-			old_pressure = Pressure;
-			Pressure = avgPres + ampPres * Mathf.sin((float) (i+2) * Mathf.PI / (daysPerYear / 8) + randomStagger) + (Temperature - old_temp) / (1440 / daysPerYear);
-			Humidity = avgHum + 
-				ampHum * Mathf.sin((float) (i+5) * Mathf.PI / (daysPerYear / 33) + randomStagger) + 
-				30*Mathf.sin((float) (i-5) * Mathf.PI / ((daysPerYear / 64)) + (randomStagger)) + 
-				((float) daysPerYear / 72)*Mathf.abs(old_temp - Temperature)*(old_temp - Temperature)) + 
-				((float) daysPerYear / 36)*(old_pressure - Pressure)*(old_pressure - Pressure);
-
+			Temperature = avgTemp + ampTemp * Mathf.Sin(((float) i * 2 * Mathf.PI / (float) daysPerYear) + (Mathf.PI / 8)) + (ampTemp / 10)*Mathf.Sin((float) i * Mathf.PI / ((daysPerYear / 16)) + (randomStagger)) + Random.Range(-varianceTemp, varianceTemp);
+			Temperature -= tempSubtractFromNext;
+			float old_pressure = Pressure;
+			Pressure = avgPres + ampPres * Mathf.Sin((float) (i+2) * Mathf.PI / (daysPerYear / 8) + randomStagger) + (Temperature - old_temp) / (1440 / daysPerYear);
+			Humidity = 
+				avgHum + ampHum * Mathf.Sin ((float)(i + 5) * Mathf.PI / (daysPerYear / 33) + randomStagger) +
+			30 * Mathf.Sin ((float)(i - 5) * Mathf.PI / (daysPerYear / 64f) + randomStagger) +
+			(((float)daysPerYear / 72) * Mathf.Abs (old_temp - Temperature) * (old_temp - Temperature)) +
+			((float)daysPerYear / 36) * (old_pressure - Pressure) * (old_pressure - Pressure) +
+				Mathf.Cos(windDirection*Mathf.PI / 180)*windSpeed;
+			float Precipitation = 0.5f*Mathf.Exp((Pressure-old_pressure)/3) * (Humidity-85) / 5;
+			windSpeed = Mathf.Pow(Mathf.Abs((Pressure - old_pressure) / 3 * 20), 1.2f) * (instability / 10);
+			windSign = (int) Random.Range(-1,1);
+			if (windSign == 0)
+			{
+				windSign = 1;
+			}
+			windDirection = Mathf.Exp((old_pressure - Pressure)*5)*windSign;
+			if(windDirection > 180)
+			{
+				windDirection = 180;
+			}
+			else if(windDirection < -180)
+			{
+				windDirection = -180;
+			}
+			float heatIndex = Temperature+(Humidity-50) / 5 - windSpeed / 2;
+			float cloudAltitude = Pressure * Mathf.Log10(Mathf.Abs(Humidity))/200;
+			if (cloudAltitude > 1)
+			{
+				cloudAltitude = 1;
+			}
+			else if (cloudAltitude < 0)
+			{
+				cloudAltitude = 0;
+			}
 			if(Humidity < 0)
 			{
 				Humidity = 0;
 			}
 			if (Humidity > 85)
 			{
-				Precipitation = 0.5*Mathf.Exp((Pressure-old_pressure)/3) * (Humidity-85) / 5;
-					if (Precipitation > 10)
+				c = Day.cloudCover.overcast;
+				float dailyPrecip = 0.5f * Mathf.Exp((old_pressure-Pressure) / 3) * (Humidity-85)/5;
+				if (dailyPrecip > 10)
+				{
+					cloudThickness = 1;
+					dailyPrecip = 10;
+				}
+				Precipitation += dailyPrecip;
+				if(Humidity > 100)
+				{
+					Humidity = 100;
+				}
+				if(Temperature < 35)
+				{
+					sc = Day.skyColor.white;
+					if (Pressure < 97)
 					{
-						Precipitation = 10;
+						cloudThickness = 1;
+						prc = Day.precipitation.blizzard;
 					}
-					if(Humidity > 100)
-					{
-						Humidity = 100;
+					else{
+						cloudThickness = 0.8f;
+						prc = Day.precipitation.snow;
 					}
-				if(Temperature <= 32){
+				}
+				else if (Pressure < 95){
+					sc = Day.skyColor.grey;
+					cloudThickness = 1;
+					prc = Day.precipitation.typhoon;
+				}
+				else if (Pressure < 97)
+				{
+					sc = Day.skyColor.grey;
+					cloudThickness = 0.9f;
+					prc = Day.precipitation.storm;
+				}
+				else{
+					sc = Day.skyColor.grey;
+					cloudThickness = 0.8f;
+					prc = Day.precipitation.rain;
+				}
 			}
+			else if (Humidity > 60)
+			{
+				c = Day.cloudCover.partly_cloudy;
+				sc = Day.skyColor.blue;
+				cloudThickness = (Humidity - 10) / 100;
+				prc = Day.precipitation.none;
+			}
+			else{
+				c = Day.cloudCover.sunny;
+				cloudThickness = (Humidity - 20) / 150;
+				sc = Day.skyColor.blue;
+				if (cloudThickness < 0){
+					cloudThickness = 0;
+				}
+				prc = Day.precipitation.none;
+			}
+
+
+			tempSubtractFromNext -= cloudThickness * 10;
+
+
+			//Day(Temperature, Pressure, pressureRange p, cloudCover c, bool fog, float h, skyColor sc, precipitation prc, windType wt, float ws, 
+				//seaState st,tr,wd)
+
+			if (windSpeed < 4 &&  (prc == Day.precipitation.rain || prc == Day.precipitation.storm))
+			{
+				fog = true;
+			}
+			// set wind type
+			if(windSpeed == 0)
+			{
+				wt = Day.windType.calm;
+				st = Day.seaState.calm;
+			}
+			else if(windSpeed < 2)
+			{
+				wt = Day.windType.breeze;
+				st = Day.seaState.smooth;
+			}
+			else if(windSpeed < 6)
+			{
+				wt = Day.windType.strong_breeze;
+				st = Day.seaState.slight;
+			}
+			else if(windSpeed < 10)
+			{
+				wt = Day.windType.moderate;
+				st = Day.seaState.moderate;
+			}
+			else if(windSpeed < 14)
+			{
+				wt = Day.windType.gale;
+				st = Day.seaState.rough;
+			}
+			else if(windSpeed < 18)
+			{
+				wt = Day.windType.storm;
+				st = Day.seaState.very_rough;
+			}
+			else
+			{
+				wt = Day.windType.hurricane;
+				st = Day.seaState.phenomenal;
+			}
+
+			windDirection += 180;
+			//set cardinal direction
+			if (windDirection <= 22.5f) {
+				wd = Day.windDirection.N;
+			} else if (windDirection <= 67.5f) {
+				wd = Day.windDirection.NE;
+			} else if (windDirection <= 112.5f) {
+				wd = Day.windDirection.E;
+			} else if (windDirection <= 157.5f) {
+				wd = Day.windDirection.SE;
+			} else if (windDirection <= 202.5f) {
+				wd = Day.windDirection.S;
+			} else if (windDirection <= 247.5f) {
+				wd = Day.windDirection.SW;
+			} else if (windDirection <= 292.5f) {
+				wd = Day.windDirection.W;
+			} else if (windDirection <= 337.5f) {
+				wd = Day.windDirection.NW;
+			} else {
+				wd = Day.windDirection.N;
+			}
+			//set pressure range
+			if(Pressure < 98){
+				p = Day.pressureRange.low;
+			}
+			else if(Pressure < 102){
+				p = Day.pressureRange.moderate;
+			}
+			else{
+				p = Day.pressureRange.high;
+			}
+			//set temperature range
+			if(Temperature < 33){
+				tr = Day.temperatureRange.freezing;
+			}
+			else if(Temperature < 50){
+				tr = Day.temperatureRange.cold;
+			}
+			else if(Temperature < 65){
+				tr = Day.temperatureRange.tepid;
+			}
+			else if(Temperature < 77){
+				tr = Day.temperatureRange.warm;
+			}
+			else if(Temperature < 92){
+				tr = Day.temperatureRange.hot;
+			}
+			else{
+				tr = Day.temperatureRange.boiling;
+			}
+			/*Debug.Log (i);
+			Debug.Log (Temperature);
+			Debug.Log (Pressure);
+			Debug.Log (p);
+			Debug.Log (c);
+			Debug.Log (fog);
+			Debug.Log (Humidity);// NaN
+			Debug.Log (sc);
+			Debug.Log (prc);
+			Debug.Log (wt);
+			Debug.Log (windSpeed);
+			Debug.Log (st);
+			Debug.Log (tr);
+			Debug.Log (wd);*/
+			days [i] = new Day (i, Temperature, Pressure, p, c, fog, Humidity, sc, prc, wt, windSpeed, st, tr, wd); 
 		}
 
 		// manual set of all predictions (1 means ask, 0 means don't)
@@ -93,23 +296,23 @@ public class WeatherController : MonoBehaviour {
 		predictions[0] = new bool[] {false,false,true,false,false, false,false,false,false,false, true,false,true,false}; //anomaly, wind type, wind direction -- barometer, wind vane
 		predictions[1] = new bool[] {false,false,true,false,false, false,false,false,false,false, true,false,true,false}; //anomaly, wind type, wind direction -- barometer, wind vane
 		predictions[2] = new bool[] {false,false,true,false,false, false,false,false,false,false, true,false,true,false}; //anomaly, wind type, wind direction -- barometer, wind vane
-		predictions[3] = new bool[] {false,false,true,false,false, false,false,false,false,false, true,false,true,false}; //anomaly, wind type, wind direction -- barometer, wind vane
-		predictions[4] = new bool[] {false,false,true,false,false, false,false,false,false,false, true,false,true,false}; //anomaly, wind type, wind direction -- barometer, wind vane
-		predictions[5] = new bool[] {false,false,true,false,false, false,false,false,false,false, true,false,true,false}; //anomaly, wind type, wind direction -- barometer, wind vane
+		predictions[3] = new bool[] {false,false,true,false,true, false,false,false,false,false, true,false,true,false}; //anomaly, wind type, wind direction, pressure range -- barometer, wind vane
+		predictions[4] = new bool[] {false,false,true,false,true, false,false,false,false,false, true,false,true,false}; //anomaly, wind type, wind direction, pressure range -- barometer, wind vane
+		predictions[5] = new bool[] {false,false,true,false,true, false,false,false,false,false, true,false,true,false}; //anomaly, wind type, wind direction, pressure range -- barometer, wind vane
 
-		predictions[6] = new bool[] {false,false,true,false,false, false,false,false,false,false, true,false,true,false}; //anomaly, wind type, wind direction -- barometer, wind vane, galilean thermometer
-		predictions[7] = new bool[] {false,false,true,false,false, false,false,false,false,false, true,false,true,false}; //anomaly, wind type, wind direction -- barometer, wind vane, galilean thermometer
-		predictions[8] = new bool[] {false,false,true,false,false, false,false,false,false,false, true,false,true,false}; //anomaly, wind type, wind direction -- barometer, wind vane, galilean thermometer
-		predictions[9] = new bool[] {true,false,true,false,false, false,false,false,false,false, true,false,true,false}; //anomaly, wind type, wind direction, temperature -- barometer, wind vane, galilean thermometer
-		predictions[10] = new bool[] {true,false,true,false,false, false,false,false,false,false, true,false,true,false}; //anomaly, wind type, wind direction, temperature -- barometer, wind vane, galilean thermometer
-		predictions[11] = new bool[] {true,false,true,false,false, false,false,false,false,false, true,false,true,false}; //anomaly, wind type, wind direction, temperature -- barometer, wind vane, galilean thermometer
+		predictions[6] = new bool[] {false,false,true,false,true, false,false,false,false,false, true,false,true,false}; //anomaly, wind type, wind direction, pressure range -- barometer, wind vane, galilean thermometer
+		predictions[7] = new bool[] {false,false,true,false,true, false,false,false,false,false, true,false,true,false}; //anomaly, wind type, wind direction, pressure range -- barometer, wind vane, galilean thermometer
+		predictions[8] = new bool[] {false,false,true,false,true, false,false,false,false,false, true,false,true,false}; //anomaly, wind type, wind direction, pressure range -- barometer, wind vane, galilean thermometer
+		predictions[9] = new bool[] {true,false,true,false,true, false,false,false,false,false, true,false,true,false}; //anomaly, wind type, wind direction, pressure range, temperature -- barometer, wind vane, galilean thermometer
+		predictions[10] = new bool[] {true,false,true,false,true, false,false,false,false,false, true,false,true,false}; //anomaly, wind type, wind direction, pressure range, temperature -- barometer, wind vane, galilean thermometer
+		predictions[11] = new bool[] {true,false,true,false,true, false,false,false,false,false, true,false,true,false}; //anomaly, wind type, wind direction, pressure range, temperature -- barometer, wind vane, galilean thermometer
 
-		predictions[12] = new bool[] {true,false,true,false,false, false,false,false,false,false, true,false,true,false}; //anomaly, wind direction, wind type, temperature -- barometer, wind vane, galilean thermometer
-		predictions[13] = new bool[] {true,false,true,false,false, false,false,false,false,false, true,false,true,false}; //anomaly, wind direction, wind type, temperature -- barometer, wind vane, galilean thermometer
-		predictions[14] = new bool[] {true,false,true,false,false, false,false,false,false,false, true,false,true,false}; //anomaly, wind direction, wind type, temperature -- barometer, wind vane, galilean thermometer
-		predictions[15] = new bool[] {true,false,true,false,false, false,false,false,false,false, false,true,true,false}; //anomaly, wind direction, wind speed, temperature -- barometer, wind vane, galilean thermometer
-		predictions[16] = new bool[] {true,false,true,false,false, false,false,false,false,false, false,true,true,false}; //anomaly, wind direction, wind speed, temperature -- barometer, wind vane, galilean thermometer
-		predictions[17] = new bool[] {true,false,true,false,false, false,false,false,false,false, false,true,true,false}; //anomaly, wind direction, wind speed, temperature -- barometer, wind vane, galilean thermometer
+		predictions[12] = new bool[] {true,false,true,true,false, false,false,false,false,false, true,false,true,false}; //anomaly, wind direction, wind type, pressure, temperature -- barometer, wind vane, galilean thermometer
+		predictions[13] = new bool[] {true,false,true,true,false, false,false,false,false,false, true,false,true,false}; //anomaly, wind direction, wind type, pressure, temperature -- barometer, wind vane, galilean thermometer
+		predictions[14] = new bool[] {true,false,true,true,false, false,false,false,false,false, true,false,true,false}; //anomaly, wind direction, wind type, pressure, temperature -- barometer, wind vane, galilean thermometer
+		predictions[15] = new bool[] {true,false,true,true,false, false,false,false,false,false, false,true,true,false}; //anomaly, wind direction, wind speed, pressure, temperature -- barometer, wind vane, galilean thermometer
+		predictions[16] = new bool[] {true,false,true,true,false, false,false,false,false,false, false,true,true,false}; //anomaly, wind direction, wind speed, pressure, temperature -- barometer, wind vane, galilean thermometer
+		predictions[17] = new bool[] {true,false,true,true,false, false,false,false,false,false, false,true,true,false}; //anomaly, wind direction, wind speed, pressure, temperature -- barometer, wind vane, galilean thermometer
 
 		predictions[18] = new bool[] {true,false,true,false,false, false,false,true,false,false, false,true,true,false}; //anomaly,  wind direction, wind speed, temperature, humidity -- barometer, wind vane, galilean thermometer, cup anomometer
 		predictions[19] = new bool[] {true,false,true,false,false, false,false,true,false,false, false,true,true,false}; //anomaly,  wind direction, wind speed, temperature, humidity -- barometer, wind vane, galilean thermometer, cup anemometer
@@ -176,17 +379,12 @@ public class WeatherController : MonoBehaviour {
 
 	}
 
-	// Update is called once per frame
-	void Update () {
+	void setInstruments(Day d) {
+			for (int i = 0; i < devices.Length; i++) {
+			if (d.season >= devices[i].unlockSeason) {
+				devices [i].set (d);
+				}
+			}
+		}
 
-	}
-
-	//	void setInstruments(Day d) {
-	//		for (int i = 0; i < devices.Length; i++) {
-	//			if (d.season >= devices[i].unlockSeason) {
-	//				devices [i].set (d);
-	//			}
-	//		}
-	//	}
-		*/
 }
