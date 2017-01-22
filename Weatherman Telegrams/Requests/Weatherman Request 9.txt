@@ -1,0 +1,16 @@
+FORMAL ADDRESS TO THE WEATHER FORECASTER
+----------------------------------------
+Forecaster,
+
+The Sewage Cleaners Union is in need of
+your services. Today is our designated
+sewer cleaning day; before we can send
+off our workers, we would like to ensure
+their safety in all regards.
+
+Please provide <CONDITION> in today's
+report.
+
+Svegard
+Sewage Cleaners Union President
+----------------------------------------
