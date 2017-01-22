@@ -38,6 +38,7 @@ public class WindowOpener : MonoBehaviour {
 	public AudioSource ausWindowSqueak;
 	public AudioSource ausWindowShut;
 
+	public CloudSpawner cs;
 
 	// Use this for initialization
 	void Start () {
@@ -120,6 +121,7 @@ public class WindowOpener : MonoBehaviour {
 	//2102.1486 * log(x - 539) + 9000
 
 	public void setExterior(Day d) {
+		cs.set (d);
 		if (d.Precipitation == Day.precipitation.none) {
 			Rain = false;
 		} else {

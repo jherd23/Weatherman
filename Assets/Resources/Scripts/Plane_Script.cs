@@ -25,9 +25,9 @@ public class Plane_Script : MonoBehaviour {
 
 		timer += 0.5f * Time.deltaTime;
 
-		if (timer > 1.5f) {
+		if (timer > 1.5f && alphaTarget == 1) {
 			alphaTarget = 0;
-
+			GameObject.Find ("WeatherAndSaveController").GetComponent<WeatherController> ().incrementDay ();
 		}
 
 		if (timer > 3.0) {

@@ -43,14 +43,14 @@ public class CloudSpawner : MonoBehaviour {
 		if (cooldown < 0) {
 			if (currentday.Cloudcover == Day.cloudCover.partly_cloudy) {
 				GameObject newCloud = GameObject.Instantiate (Resources.Load (partlyCloudyPrefabs [Random.Range (0, partlyCloudyPrefabs.Length)]) as GameObject);
-				newCloud.GetComponent<Cloud> ().speed = currentday.WindSpeed * (directionToDegrees (currentday.WindDirection) >= 180 ? -1 : 1);
-				newCloud.transform.position = new Vector3 (directionToDegrees (currentday.WindDirection) >= 180 ? -1000 : 1000, height + Random.Range (0f, 150f), -600);
+				newCloud.GetComponent<Cloud> ().speed = currentday.WindSpeed * 30 * (directionToDegrees (currentday.WindDirection) >= 180 ? -1 : 1);
+				newCloud.transform.position = new Vector3 (directionToDegrees (currentday.WindDirection) >= 180 ? -1100 : 1100, height + Random.Range (0f, 150f), -600);
 				newCloud.transform.localScale = Random.Range (1, maxScale) * newCloud.transform.localScale;
 				clouds.Add (newCloud);
 			} else if (currentday.Cloudcover == Day.cloudCover.overcast) {
 				GameObject newCloud = GameObject.Instantiate (Resources.Load (overcastPrefabs [Random.Range (0, overcastPrefabs.Length)]) as GameObject);
-				newCloud.GetComponent<Cloud> ().speed = currentday.WindSpeed * (directionToDegrees (currentday.WindDirection) >= 180 ? -1 : 1);
-				newCloud.transform.position = new Vector3 (directionToDegrees (currentday.WindDirection) >= 180 ? -1000 : 1000, height + Random.Range (0f, 150f), -600);
+				newCloud.GetComponent<Cloud> ().speed = currentday.WindSpeed * 30 * (directionToDegrees (currentday.WindDirection) >= 180 ? -1 : 1);
+				newCloud.transform.position = new Vector3 (directionToDegrees (currentday.WindDirection) >= 180 ? -1100 : 1100, height + Random.Range (0f, 150f), -600);
 				newCloud.transform.localScale = Random.Range (1, maxScale) * newCloud.transform.localScale;
 				clouds.Add (newCloud);
 			}
@@ -58,11 +58,11 @@ public class CloudSpawner : MonoBehaviour {
 		}
 
 		for (int i = 0; i < clouds.Count; i++) {
-			if (clouds [i].transform.position.x > 1000 && directionToDegrees (currentday.WindDirection) >= 180) {
+			if (clouds [i].transform.position.x > 1100 && directionToDegrees (currentday.WindDirection) >= 180) {
 				GameObject temp = clouds [i];
 				clouds.RemoveAt (i);
 				Destroy (temp);
-			} else if (clouds[i].transform.position.x < -1000 && directionToDegrees(currentday.WindDirection) < 180) {
+			} else if (clouds[i].transform.position.x < -1100 && directionToDegrees(currentday.WindDirection) < 180) {
 				GameObject temp = clouds [i];
 				clouds.RemoveAt (i);
 				Destroy (temp);
@@ -93,7 +93,7 @@ public class CloudSpawner : MonoBehaviour {
 		}
 	}
 
-	void set (Day d) {
+	public void set (Day d) {
 		reset ();
 		currentday = d;
 		switch (d.Cloudcover) {
@@ -110,12 +110,12 @@ public class CloudSpawner : MonoBehaviour {
 			} else {
 				cirrusClouds [random].SetActive (true);
 			}
-			approxTiming = 5f / d.WindSpeed;
-			timingVariance = 1;
+			approxTiming = 8f / d.WindSpeed;
+			timingVariance = .6f;
 			break;
 		case Day.cloudCover.overcast:
 			altoCumulus.SetActive (true);
-			approxTiming = 2f / d.WindSpeed;
+			approxTiming = 3f / d.WindSpeed;
 			timingVariance = .3f;
 			break;
 		}

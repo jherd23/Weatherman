@@ -415,9 +415,7 @@ public class WeatherController : MonoBehaviour {
 
 	void Update()
 	{
-		if (Input.GetKeyDown (KeyCode.Space)) {
-			incrementDay ();
-		}
+
 	}
 
 
@@ -429,7 +427,7 @@ public class WeatherController : MonoBehaviour {
 		}
 	}
 		
-	void incrementDay(){
+	public void incrementDay(){
 		currentDay++;
 		win.setExterior (days [currentDay]);
 		printDay (days [currentDay]);
