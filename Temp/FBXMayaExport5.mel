@@ -1,0 +1,36 @@
+print "Starting maya loading and fbx conversion \n";
+			
+<<<<<<< HEAD
+if (`file -q -exists "/Users/Sanjana/GitHub/Weatherman/Assets/Resources/fitzroystormglass.ma"`)
+{
+	file -o "/Users/Sanjana/GitHub/Weatherman/Assets/Resources/fitzroystormglass.ma";
+=======
+if (`file -q -exists "/Users/jackherd/Documents/Weatherman/Weatherman/Assets/Resources/anemometer.ma"`)
+{
+	file -o "/Users/jackherd/Documents/Weatherman/Weatherman/Assets/Resources/anemometer.ma";
+>>>>>>> ede1f29ab8f91a183d7845b91fc7321a0cd8b52d
+	FBXExportEmbeddedTextures -v false;
+	// FBXExportHardEdges -v true;
+	FBXExportApplyConstantKeyReducer -v false;
+	FBXExportShowUI -v false;
+
+	print "Before fbx export\n";
+<<<<<<< HEAD
+	FBXExport -f "/Users/Sanjana/GitHub/Weatherman/Temp/ExportedFBXFile.fbx";
+=======
+	FBXExport -f "/Users/jackherd/Documents/Weatherman/Weatherman/Temp/ExportedFBXFile.fbx";
+>>>>>>> ede1f29ab8f91a183d7845b91fc7321a0cd8b52d
+	print "after fbx export\n";
+}
+else
+	print "Could not open Maya file.";
+
+system ("del \"!//UNITY_TEMP_WIN//!\\CommandPipe\"");
+
+<<<<<<< HEAD
+$donepipeKill = `fopen "/Users/Sanjana/GitHub/Weatherman/Temp/SyncPipeKill" "w"`;
+=======
+$donepipeKill = `fopen "/Users/jackherd/Documents/Weatherman/Weatherman/Temp/SyncPipeKill" "w"`;
+>>>>>>> ede1f29ab8f91a183d7845b91fc7321a0cd8b52d
+fwrite $donepipeKill "Done";
+fclose $donepipeKill;

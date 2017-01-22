@@ -21,6 +21,29 @@ ModelImporter:
     100026: pCylinder1
     100028: pCylinder2
     100030: pSphere1
+    100032: group5
+    100034: nurbsToPoly1
+    100036: nurbsToPoly2
+    100038: pasted__group2
+    100040: pasted__pasted__group1
+    100042: pasted__pasted__pasted__group
+    100044: pasted__pasted__pasted__pasted__pCube1
+    100046: pasted__pasted__pasted__pCube1
+    100048: pasted__pasted__pCube1
+    100050: pasted__pCube1
+    100052: pasted__pCube1 1
+    100054: pCube1
+    100056: pCylinder3
+    100058: pPlane1
+    100060: pPlane2
+    100062: pPlane3
+    100064: pPlane4
+    100066: pSphere2
+    100068: pSphere3
+    100070: pSphere4
+    100072: pTorus1
+    100074: transform1
+    100076: transform2
     400000: //RootNode
     400002: group
     400004: group1
@@ -37,6 +60,29 @@ ModelImporter:
     400026: pCylinder1
     400028: pCylinder2
     400030: pSphere1
+    400032: group5
+    400034: nurbsToPoly1
+    400036: nurbsToPoly2
+    400038: pasted__group2
+    400040: pasted__pasted__group1
+    400042: pasted__pasted__pasted__group
+    400044: pasted__pasted__pasted__pasted__pCube1
+    400046: pasted__pasted__pasted__pCube1
+    400048: pasted__pasted__pCube1
+    400050: pasted__pCube1
+    400052: pasted__pCube1 1
+    400054: pCube1
+    400056: pCylinder3
+    400058: pPlane1
+    400060: pPlane2
+    400062: pPlane3
+    400064: pPlane4
+    400066: pSphere2
+    400068: pSphere3
+    400070: pSphere4
+    400072: pTorus1
+    400074: transform1
+    400076: transform2
     2300000: pasted__pasted__pasted__pSphere1
     2300002: pasted__pasted__pSphere1
     2300004: pasted__pCylinder2
@@ -44,6 +90,21 @@ ModelImporter:
     2300008: pCylinder1
     2300010: pCylinder2
     2300012: pSphere1
+    2300014: nurbsToPoly1
+    2300016: nurbsToPoly2
+    2300018: pasted__pasted__pasted__pasted__pCube1
+    2300020: pasted__pasted__pasted__pCube1
+    2300022: pasted__pasted__pCube1
+    2300024: pasted__pCube1
+    2300026: pasted__pCube1 1
+    2300028: pCube1
+    2300030: pCylinder3
+    2300032: pPlane2
+    2300034: pPlane4
+    2300036: pSphere2
+    2300038: pSphere3
+    2300040: pSphere4
+    2300042: pTorus1
     3300000: pasted__pasted__pasted__pSphere1
     3300002: pasted__pasted__pSphere1
     3300004: pasted__pCylinder2
@@ -51,6 +112,21 @@ ModelImporter:
     3300008: pCylinder1
     3300010: pCylinder2
     3300012: pSphere1
+    3300014: nurbsToPoly1
+    3300016: nurbsToPoly2
+    3300018: pasted__pasted__pasted__pasted__pCube1
+    3300020: pasted__pasted__pasted__pCube1
+    3300022: pasted__pasted__pCube1
+    3300024: pasted__pCube1
+    3300026: pasted__pCube1 1
+    3300028: pCube1
+    3300030: pCylinder3
+    3300032: pPlane2
+    3300034: pPlane4
+    3300036: pSphere2
+    3300038: pSphere3
+    3300040: pSphere4
+    3300042: pTorus1
     4300000: pasted__pSphere1
     4300002: pasted__pasted__pasted__pSphere1
     4300004: pCylinder1
@@ -58,6 +134,21 @@ ModelImporter:
     4300008: pSphere1
     4300010: pasted__pCylinder2
     4300012: pasted__pasted__pSphere1
+    4300014: nurbsToPoly1
+    4300016: nurbsToPoly2
+    4300018: pPlane2
+    4300020: pPlane4
+    4300022: pSphere2
+    4300024: pCube1
+    4300026: pasted__pCube1
+    4300028: pasted__pasted__pCube1
+    4300030: pasted__pasted__pasted__pCube1
+    4300032: pasted__pasted__pasted__pasted__pCube1
+    4300034: pasted__pCube1
+    4300036: pSphere3
+    4300038: pSphere4
+    4300040: pCylinder3
+    4300042: pTorus1
     9500000: //RootNode
   materials:
     importMaterials: 1

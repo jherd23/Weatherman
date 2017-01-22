@@ -111,6 +111,15 @@ public class WeatherController : MonoBehaviour {
 			{
 				cloudAltitude = 0;
 			}
+			Temperature = avgTemp + ampTemp * Mathf.Sin((float) i * 2 * Mathf.PI / (float) daysPerYear + (Mathf.PI / 8)) + (ampTemp / 10)*Mathf.Sin((float) i * Mathf.PI / ((daysPerYear / 16)) + (randomStagger)) + Random.Range(-varianceTemp, varianceTemp);
+			old_pressure = Pressure;
+			Pressure = avgPres + ampPres * Mathf.Sin((float) (i+2) * Mathf.PI / (daysPerYear / 8) + randomStagger) + (Temperature - old_temp) / (1440 / daysPerYear);
+			Humidity = avgHum + 
+				ampHum * Mathf.Sin((float) (i+5) * Mathf.PI / (daysPerYear / 33) + randomStagger) + 
+				30*Mathf.Sin((float) (i-5) * Mathf.PI / ((daysPerYear / 64)) + (randomStagger)) + 
+				((float) daysPerYear / 72)*Mathf.Abs(old_temp - Temperature)*(old_temp - Temperature) + 
+				((float) daysPerYear / 36)*(old_pressure - Pressure)*(old_pressure - Pressure);
+
 			if(Humidity < 0)
 			{
 				Humidity = 0;
