@@ -96,7 +96,7 @@ public class WindowOpener : MonoBehaviour {
 			lastPos = control.value;
 			moving = true;
 		} else {
-			Debug.Log ("stopped");
+//			Debug.Log ("stopped");
 			ausWindowSqueak.volume = 0.0f;
 			if (lastPos < 550.0f && moving) {
 				ausWindowShut.Play ();
