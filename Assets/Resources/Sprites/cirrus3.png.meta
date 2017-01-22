@@ -1,31 +1,11 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 171f22b98ade14d1480bbaabc55fdb43
-timeCreated: 1485108127
-=======
-guid: 58a53e8909a3c4df08d9786e393bdc2d
-timeCreated: 1485107640
->>>>>>> origin/master
-licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
-<<<<<<< HEAD
     enableMipMap: 0
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-    enableMipMap: 0
-=======
-    enableMipMap: 1
->>>>>>> origin/master
->>>>>>> origin/master
-=======
-    enableMipMap: 1
->>>>>>> origin/master
->>>>>>> origin/master
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -48,33 +28,11 @@ TextureImporter:
     filterMode: -1
     aniso: -1
     mipBias: -1
-<<<<<<< HEAD
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
   spriteMode: 1
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-    wrapMode: 1
-  nPOTScale: 0
-  lightmap: 0
-  compressionQuality: 50
-  spriteMode: 1
-=======
-=======
->>>>>>> origin/master
-    wrapMode: -1
-  nPOTScale: 1
-  lightmap: 0
-  compressionQuality: 50
-  spriteMode: 0
->>>>>>> origin/master
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> origin/master
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -82,27 +40,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaUsage: 1
-<<<<<<< HEAD
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-  alphaIsTransparency: 1
-  spriteTessellationDetail: -1
-  textureType: 8
-=======
-=======
->>>>>>> origin/master
-  alphaIsTransparency: 0
-  spriteTessellationDetail: -1
-  textureType: 0
->>>>>>> origin/master
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> origin/master
   textureShape: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
@@ -116,13 +56,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> origin/master
   - buildTarget: Standalone
     maxTextureSize: 2048
     textureFormat: -1
@@ -131,16 +64,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> origin/master
->>>>>>> origin/master
-=======
-=======
->>>>>>> origin/master
->>>>>>> origin/master
   spriteSheet:
     serializedVersion: 2
     sprites: []
