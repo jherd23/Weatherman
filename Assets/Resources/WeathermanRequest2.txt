@@ -8,4 +8,4 @@ Forecaster!
 	Please relay <CONDITION> in your report as soon as possible.
 
 Best of luck,
-Professor John Hillgensbury
+Professor John Hillgensbury^

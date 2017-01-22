@@ -95,7 +95,6 @@
      <None Include="Assets\Resources\News\Positive Telegrams\Weatherman Positive 9.txt" />
      <None Include="Assets\Resources\News\Positive Telegrams\Weatherman Positive 3.txt" />
      <None Include="Assets\Resources\News\Random Telegrams\Weatherman 2.txt" />
-     <None Include="Assets\Resources\WeathermanRequest 1.txt" />
      <None Include="Assets\Resources\WeathermanTelegrams\Random Telegrams\RandomTelegram6.txt" />
      <None Include="Assets\Resources\WeathermanPositive8.txt" />
      <None Include="Assets\Resources\News\Random Telegrams\RandomTelegram10.txt" />
@@ -174,6 +173,7 @@
      <None Include="Assets\Resources\News\Negative Telegrams\WeathermanNegative4.txt" />
      <None Include="Assets\Resources\WeathermanNegative4.txt" />
      <None Include="Assets\Resources\WeathermanPositive10.txt" />
+     <None Include="Assets\Resources\WeathermanRequest1.txt" />
      <None Include="Assets\Resources\News\Negative Telegrams\WeathermanNegative6.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
