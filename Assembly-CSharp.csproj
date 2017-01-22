@@ -64,6 +64,7 @@
      <Compile Include="Assets\Resources\Scripts\WeatherController.cs" />
      <Compile Include="Assets\Resources\Scripts\WeatherVane.cs" />
      <Compile Include="Assets\Resources\Scripts\WindowOpener.cs" />
+     <None Include="Assets\double_sided.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
