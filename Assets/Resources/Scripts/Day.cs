@@ -8,6 +8,7 @@ public class Day {
 
 	// state variables for Day
 
+	public int Index;
 	public int season;
 	public float Temperature;
 	public temperatureRange Temprange;
@@ -36,11 +37,11 @@ public class Day {
 
 	// possible variations of each state 
 
-	public enum temperatureRange {heatstroke1, heatstroke2, heatstroke3, fatigue, caution, fair};
-	public enum pressureRange {v_Low, low, moderate, high, v_High};
-	public enum cloudCover {sunny, partly_cloudy, very_cloudy, overcast, heavy};
-	public enum skyColor {blue, grey, green};
-	public enum precipitation {clear, light, mid, hard, torrential};
+	public enum temperatureRange {subfreezing, freezing, cold, tepid, warm, hot, boiling};
+	public enum pressureRange {low, moderate, high};
+	public enum cloudCover {sunny, partly_cloudy, overcast};
+	public enum skyColor {blue, grey, white};
+	public enum precipitation {none,rain,typhoon,storm,snow,blizzard};
 	public enum windType {calm, breeze, strong_breeze, moderate, gale, storm, hurricane}; // based loosely on beufort scale
 	public enum windDirection {N, S, E, W, NW, NE, SW, SE};
 	public enum seaState {calm, smooth, slight, moderate, rough, very_rough, phenomenal};
@@ -59,10 +60,11 @@ public class Day {
 
 	// Constructor. Takes in passed values to determine the weather of this day.
 
-	public Day (float temp, float pr, pressureRange p, cloudCover c, bool fog, float h, skyColor sc, precipitation prc, windType wt, float ws, 
+	public Day (int index, float temp, float pr, pressureRange p, cloudCover c, bool fog, float h, skyColor sc, precipitation prc, windType wt, float ws, 
 		seaState st, temperatureRange tr, windDirection wd) 
 
 	{
+		this.Index = index;
 		this.Temperature = temp;
 		this.Pressure = pr;
 		this.PressureRange = p;
