@@ -30,12 +30,9 @@ public class CameraMovement : MonoBehaviour {
 	void Start () {
 		initpos = transform.position;
 		initFOV = Camera.main.fieldOfView;
-<<<<<<< HEAD
 		initRotation = transform.localEulerAngles;
-=======
 
 		resetView ();
->>>>>>> 7302a20748016cb54d3f257c24ed2f393b185930
 	}
 
 
@@ -58,7 +55,7 @@ public class CameraMovement : MonoBehaviour {
 
 			if (Physics.Raycast(ray, out hit) && (hit.transform.parent != null)) {
 				obj = GameObject.Find(hit.transform.parent.name);
-<<<<<<< HEAD
+
 				if (obj.name == "rainGauge") {
 					targetpos = new Vector3 (obj.transform.position.x, obj.transform.position.y + 500, transform.position.z);
 				} else if (obj.name == "anemometer") {
@@ -75,7 +72,7 @@ public class CameraMovement : MonoBehaviour {
 				moving = true;
 				UI = false;
 				targetRotation = initRotation;
-=======
+
 				if (obj.name == "rainGauge" || obj.name == "anemometer") {
 					targetpos = new Vector3 (obj.transform.position.x, obj.transform.position.y + 500, transform.position.z);
 					targetFOV = initFOV;
@@ -91,7 +88,7 @@ public class CameraMovement : MonoBehaviour {
 					}
 					moving = true;
 //				}
->>>>>>> 7302a20748016cb54d3f257c24ed2f393b185930
+
 			}
 		}
 
