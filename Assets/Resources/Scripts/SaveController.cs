@@ -3,12 +3,13 @@ using System.Collections;
 using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using UnityEngine.UI;
 
 public class SaveController : MonoBehaviour {
 	//on enable on disable for autosave
 
 	public static SaveController s_instance;
-	WeatherController WC;
+	public GameObject WeatherController;
 
 	// Use this for initialization
 	void Awake()
@@ -26,7 +27,7 @@ public class SaveController : MonoBehaviour {
 
 	void Start()
 	{
-		WC = this.gameObject.GetComponent<WeatherController> () as WeatherController;
+
 	}
 
 	void OnGUI()
@@ -41,47 +42,31 @@ public class SaveController : MonoBehaviour {
 		SaveData data = WriteToData();
 		bf.Serialize(file, data);
 		file.Close();
-		PlayerPrefs.SetInt ("saved", 1);
 	}
 
 	public void Load()
 	{
-		int saved = PlayerPrefs.GetInt ("saved", 0);
-		if (saved != 0) {
-			if (File.Exists (Application.persistentDataPath + "/saveInfo" + ".dat")) {
-				BinaryFormatter bf = new BinaryFormatter ();
-				FileStream file = File.Open (Application.persistentDataPath + "/saveInfo" + ".dat",
-					                  FileMode.Open);
-				SaveData data = (SaveData)bf.Deserialize (file);
-				file.Close ();
+		if(File.Exists(Application.persistentDataPath + "/saveInfo" + ".dat"))
+		{
+			BinaryFormatter bf = new BinaryFormatter();
+			FileStream file = File.Open(Application.persistentDataPath + "/saveInfo" + ".dat",
+				FileMode.Open);
+			SaveData data = (SaveData) bf.Deserialize(file);
+			file.Close();
 
-				WriteFromData (data);
-			}
-		} else {
-			//new game
+			WriteFromData (data);
 		}
 	}
 
 	private void WriteFromData(SaveData data) //loading
 	{
 		//Health.GetComponent<Slider>().value = data.health;
-		WC.daysPerSeason = data.daysPerSeason;
-		WC.numberOfSeasons = data.numberOfSeasons;
-		WC.currentDay = data.currentDay;
-		WC.devices = data.devices;
-		WC.days = data.days;
-		WC.predictions = data.predictions;
 	}
 
 	private SaveData WriteToData () //saving 
 	{
 		SaveData data = new SaveData();
-		data.daysPerSeason = WC.daysPerSeason;
-		data.numberOfSeasons = WC.numberOfSeasons;
-		data.currentDay = WC.currentDay;
-		data.devices = WC.devices;
-		data.days = WC.days;
-		data.predictions = WC.predictions;
+		//data.health = Health.GetComponent<Slider>().value;
 		return data;
 	}
 }

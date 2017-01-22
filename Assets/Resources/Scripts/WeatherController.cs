@@ -13,8 +13,6 @@ public class WeatherController : MonoBehaviour {
 
 	public bool[][] predictions;
 
-	public WindowOpener win;
-
 	public int currentDay = 0;
 	// contains bools for prediction required by each day
 
@@ -81,6 +79,12 @@ public class WeatherController : MonoBehaviour {
 			Temperature -= tempSubtractFromNext;
 			float old_pressure = Pressure;
 			Pressure = avgPres + ampPres * Mathf.Sin((float) (i+2) * Mathf.PI / (daysPerYear / 8f) + randomStagger) + (Temperature - old_temp) / (1440 / daysPerYear);
+			Humidity = 
+				avgHum + ampHum * Mathf.Sin ((float)(i + 5) * Mathf.PI / (daysPerYear / 33f) + randomStagger) +
+			30 * Mathf.Sin ((float)(i - 5) * Mathf.PI / (daysPerYear / 64f) + randomStagger) +
+			(((float)daysPerYear / 72) * Mathf.Abs (old_temp - Temperature) * (old_temp - Temperature)) +
+			((float)daysPerYear / 36) * (old_pressure - Pressure) * (old_pressure - Pressure) +
+				Mathf.Cos(windDirection*Mathf.PI / 180)*windSpeed;
 			float Precipitation = 0.5f*Mathf.Exp((Pressure-old_pressure)/3) * (Humidity-85) / 5;
 			windSpeed = Mathf.Pow(Mathf.Abs((Pressure - old_pressure) / 3 * 20), 1.2f) * (instability / 10);
 			windSign = (int) Random.Range(-1,1);
@@ -97,12 +101,6 @@ public class WeatherController : MonoBehaviour {
 			{
 				windDirection = -180;
 			}
-			Humidity = 
-				avgHum + ampHum * Mathf.Sin ((float)(i + 5) * Mathf.PI / (daysPerYear / 33f) + randomStagger) +
-				30 * Mathf.Sin ((float)(i - 5) * Mathf.PI / (daysPerYear / 64f) + randomStagger) +
-				(((float)daysPerYear / 72) * Mathf.Abs (old_temp - Temperature) * (old_temp - Temperature)) +
-				((float)daysPerYear / 36) * (old_pressure - Pressure) * (old_pressure - Pressure) +
-				Mathf.Cos(windDirection*Mathf.PI / 180f)*windSpeed;
 			float heatIndex = Temperature+(Humidity-50) / 5 - windSpeed / 2;
 			float cloudAltitude = Pressure * Mathf.Log10(Mathf.Abs(Humidity))/200;
 			if (cloudAltitude > 1)
@@ -113,7 +111,15 @@ public class WeatherController : MonoBehaviour {
 			{
 				cloudAltitude = 0;
 			}
+			Temperature = avgTemp + ampTemp * Mathf.Sin((float) i * 2 * Mathf.PI / (float) daysPerYear + (Mathf.PI / 8)) + (ampTemp / 10)*Mathf.Sin((float) i * Mathf.PI / ((daysPerYear / 16)) + (randomStagger)) + Random.Range(-varianceTemp, varianceTemp);
 			old_pressure = Pressure;
+			Pressure = avgPres + ampPres * Mathf.Sin((float) (i+2) * Mathf.PI / (daysPerYear / 8) + randomStagger) + (Temperature - old_temp) / (1440 / daysPerYear);
+			Humidity = avgHum + 
+				ampHum * Mathf.Sin((float) (i+5) * Mathf.PI / (daysPerYear / 33) + randomStagger) + 
+				30*Mathf.Sin((float) (i-5) * Mathf.PI / ((daysPerYear / 64)) + (randomStagger)) + 
+				((float) daysPerYear / 72)*Mathf.Abs(old_temp - Temperature)*(old_temp - Temperature) + 
+				((float) daysPerYear / 36)*(old_pressure - Pressure)*(old_pressure - Pressure);
+
 			if(Humidity < 0)
 			{
 				Humidity = 0;
@@ -180,7 +186,7 @@ public class WeatherController : MonoBehaviour {
 			}
 
 
-			tempSubtractFromNext = cloudThickness * 10;
+			tempSubtractFromNext -= cloudThickness * 10;
 
 
 			//Day(Temperature, Pressure, pressureRange p, cloudCover c, bool fog, float h, skyColor sc, precipitation prc, windType wt, float ws, 
@@ -398,27 +404,6 @@ public class WeatherController : MonoBehaviour {
 		
 	void incrementDay(){
 		currentDay++;
-		win.setExterior (days [currentDay]);
-		printDay (days [currentDay]);
 		setInstruments (days[currentDay]);
-	}
-
-	void printDay(Day d) {
-		Debug.Log (d.Index);
-		Debug.Log (d.season);
-		Debug.Log (d.Temperature);
-		Debug.Log (d.Temprange);
-		Debug.Log (d.Anomaly);
-		Debug.Log (d.Pressure);
-		Debug.Log (d.PressureRange);
-		Debug.Log (d.Cloudcover);
-		Debug.Log (d.Fog);
-		Debug.Log (d.Humidity);
-		Debug.Log (d.Skycolor);
-		Debug.Log (d.Precipitation);
-		Debug.Log (d.Windtype);
-		Debug.Log (d.WindSpeed);
-		Debug.Log (d.Seastate);
-		Debug.Log (d.WindDirection);
 	}
 }
