@@ -96,7 +96,6 @@ public class WindowOpener : MonoBehaviour {
 			lastPos = control.value;
 			moving = true;
 		} else {
-			Debug.Log ("stopped");
 			ausWindowSqueak.volume = 0.0f;
 			if (lastPos < 550.0f && moving) {
 				ausWindowShut.Play ();
@@ -119,4 +118,17 @@ public class WindowOpener : MonoBehaviour {
 		ausWindowSqueak.volume = 0.0f;
 	}
 	//2102.1486 * log(x - 539) + 9000
+
+	public void setExterior(Day d) {
+		if (d.Precipitation == Day.precipitation.none) {
+			Rain = false;
+		} else {
+			Rain = true;
+		}
+		if (d.Seastate == Day.seaState.calm || d.Seastate == Day.seaState.smooth || d.Seastate == Day.seaState.slight || d.Seastate == Day.seaState.moderate) {
+			Fair = true;
+		} else {
+			Fair = false;
+		}
+	}
 }

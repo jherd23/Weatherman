@@ -53,11 +53,9 @@
      <Compile Include="Assets\Resources\Scripts\Day.cs" />
      <Compile Include="Assets\Resources\Scripts\Device.cs" />
      <Compile Include="Assets\Resources\Scripts\MouseSqueak.cs" />
-<<<<<<< HEAD
-     <Compile Include="Assets\Resources\Scripts\SaveController.cs" />
-=======
+     <Compile Include="Assets\Resources\Scripts\Plane_Script.cs" />
      <Compile Include="Assets\Resources\Scripts\RainGauge.cs" />
->>>>>>> origin/master
+     <Compile Include="Assets\Resources\Scripts\SaveController.cs" />
      <Compile Include="Assets\Resources\Scripts\StormGlass.cs" />
      <Compile Include="Assets\Resources\Scripts\Thermometer.cs" />
      <Compile Include="Assets\Resources\Scripts\WeatherController.cs" />
