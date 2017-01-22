@@ -1,0 +1,10 @@
+Dear Weatherman,
+
+	I am a local fisherman hoping to catch the fabled Holyfish in my lifetime.
+	The conditions to locate this fish are very specific, and I do not possess
+	the instruments to measure said conditions.
+
+	If it would not bother you, please provide <CONDITION> for today's report.
+
+Most gracious thanks,
+Fisherman

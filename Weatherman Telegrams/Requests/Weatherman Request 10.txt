@@ -1,0 +1,10 @@
+Hey, Weatherman:
+
+	I've been arguing with a friend about the powers of weather prediction.
+	He's not budging, despite my hardest arguments about why weather prediction
+	is important.
+
+	I'd like to prove a point to him. Please provide <CONDITION> in today's report.
+
+Sincerely,
+Wickersmith Smitherbottom

@@ -13,6 +13,8 @@ public class WeatherController : MonoBehaviour {
 
 	public bool[][] predictions;
 
+	public WindowOpener win;
+
 	public int currentDay = 0;
 	// contains bools for prediction required by each day
 
@@ -32,45 +34,76 @@ public class WeatherController : MonoBehaviour {
 	 * 14) Sea State
 	*/
 
+	Day.cloudCover c;
+	Day.skyColor sc;
+	Day.precipitation prc;
+	bool fog = false;
+	Day.windType wt;
+	Day.seaState st;
+	Day.windDirection wd;
+	Day.pressureRange p;
+	Day.temperatureRange tr;
+
+	float avgTemp = 55;
+	float ampTemp = 30;
+	float varianceTemp = 2;
+
+	float avgPres  = 100;
+	float ampPres = 3;
+
+	float avgHum = 50;
+	float ampHum = 45;
+
+	float Temperature = 50;
+	float Pressure = 100;
+	float Humidity = 70;
+
+	float windSpeed = 0;
+	float windDirection = 0;
+	int windSign = 1;
+	float cloudThickness = 0;
+	float instability = 0;
+	float tempSubtractFromNext = 0;
+	int totDays = 72;
+	int daysPerYear = 4 * 6;
+	float randomStagger;
+
 	// Use this for initialization
 	void Start () {
 		days = new Day[daysPerSeason * numberOfSeasons];
 		predictions = new bool[72][];
-		Day.cloudCover c;
-		Day.skyColor sc;
-		Day.precipitation prc;
-		bool fog = false;
-		Day.windType wt;
-		Day.seaState st;
-		Day.windDirection wd;
-		Day.pressureRange p;
-		Day.temperatureRange tr;
-		float instability = 0;
-		float tempSubtractFromNext = 0;
-		int totDays = numberOfSeasons * daysPerSeason;
-		int daysPerYear = 4 * daysPerSeason;
+		randomStagger = Random.Range(-Mathf.PI,Mathf.PI);
 
 		//sinusoidal model
-		float avgTemp = 55;
-		float ampTemp = 30;
-		float varianceTemp = 2;
-
-		float avgPres  = 100;
-		float ampPres = 3;
-
-		float avgHum = 50;
-		float ampHum = 45;
-
-		float randomStagger = Random.Range(-Mathf.PI,Mathf.PI);
-		float Temperature = 50;
-		float Pressure = 100;
-		float Humidity = 70;
-
-		float windSpeed = 0;
-		float windDirection = 0;
-		int windSign = 1;
-		float cloudThickness = 0;
+		New();
 	
+	}
+
+	public void New(){
+
+		avgTemp = 55;
+		ampTemp = 30;
+		varianceTemp = 2;
+
+		avgPres  = 100;
+		ampPres = 3;
+
+		avgHum = 50;
+		ampHum = 45;
+
+		Temperature = 50;
+		Pressure = 100;
+		Humidity = 70;
+
+		windSpeed = 0;
+		windDirection = 0;
+		windSign = 1;
+		cloudThickness = 0;
+		instability = 0;
+		tempSubtractFromNext = 0;
+		totDays = 72;
+		daysPerYear = 4 * 6;
+
 		for (int i = 0; i < totDays; i++) {
 			//wesley's math
 			instability = (float)i * 10 / totDays;
@@ -79,12 +112,6 @@ public class WeatherController : MonoBehaviour {
 			Temperature -= tempSubtractFromNext;
 			float old_pressure = Pressure;
 			Pressure = avgPres + ampPres * Mathf.Sin((float) (i+2) * Mathf.PI / (daysPerYear / 8f) + randomStagger) + (Temperature - old_temp) / (1440 / daysPerYear);
-			Humidity = 
-				avgHum + ampHum * Mathf.Sin ((float)(i + 5) * Mathf.PI / (daysPerYear / 33f) + randomStagger) +
-			30 * Mathf.Sin ((float)(i - 5) * Mathf.PI / (daysPerYear / 64f) + randomStagger) +
-			(((float)daysPerYear / 72) * Mathf.Abs (old_temp - Temperature) * (old_temp - Temperature)) +
-			((float)daysPerYear / 36) * (old_pressure - Pressure) * (old_pressure - Pressure) +
-				Mathf.Cos(windDirection*Mathf.PI / 180)*windSpeed;
 			float Precipitation = 0.5f*Mathf.Exp((Pressure-old_pressure)/3) * (Humidity-85) / 5;
 			windSpeed = Mathf.Pow(Mathf.Abs((Pressure - old_pressure) / 3 * 20), 1.2f) * (instability / 10);
 			windSign = (int) Random.Range(-1,1);
@@ -101,6 +128,12 @@ public class WeatherController : MonoBehaviour {
 			{
 				windDirection = -180;
 			}
+			Humidity = 
+				avgHum + ampHum * Mathf.Sin ((float)(i + 5) * Mathf.PI / (daysPerYear / 33f) + randomStagger) +
+				30 * Mathf.Sin ((float)(i - 5) * Mathf.PI / (daysPerYear / 64f) + randomStagger) +
+				(((float)daysPerYear / 72) * Mathf.Abs (old_temp - Temperature) * (old_temp - Temperature)) +
+				((float)daysPerYear / 36) * (old_pressure - Pressure) * (old_pressure - Pressure) +
+				Mathf.Cos(windDirection*Mathf.PI / 180f)*windSpeed;
 			float heatIndex = Temperature+(Humidity-50) / 5 - windSpeed / 2;
 			float cloudAltitude = Pressure * Mathf.Log10(Mathf.Abs(Humidity))/200;
 			if (cloudAltitude > 1)
@@ -111,15 +144,7 @@ public class WeatherController : MonoBehaviour {
 			{
 				cloudAltitude = 0;
 			}
-			Temperature = avgTemp + ampTemp * Mathf.Sin((float) i * 2 * Mathf.PI / (float) daysPerYear + (Mathf.PI / 8)) + (ampTemp / 10)*Mathf.Sin((float) i * Mathf.PI / ((daysPerYear / 16)) + (randomStagger)) + Random.Range(-varianceTemp, varianceTemp);
 			old_pressure = Pressure;
-			Pressure = avgPres + ampPres * Mathf.Sin((float) (i+2) * Mathf.PI / (daysPerYear / 8) + randomStagger) + (Temperature - old_temp) / (1440 / daysPerYear);
-			Humidity = avgHum + 
-				ampHum * Mathf.Sin((float) (i+5) * Mathf.PI / (daysPerYear / 33) + randomStagger) + 
-				30*Mathf.Sin((float) (i-5) * Mathf.PI / ((daysPerYear / 64)) + (randomStagger)) + 
-				((float) daysPerYear / 72)*Mathf.Abs(old_temp - Temperature)*(old_temp - Temperature) + 
-				((float) daysPerYear / 36)*(old_pressure - Pressure)*(old_pressure - Pressure);
-
 			if(Humidity < 0)
 			{
 				Humidity = 0;
@@ -186,11 +211,11 @@ public class WeatherController : MonoBehaviour {
 			}
 
 
-			tempSubtractFromNext -= cloudThickness * 10;
+			tempSubtractFromNext = cloudThickness * 10;
 
 
 			//Day(Temperature, Pressure, pressureRange p, cloudCover c, bool fog, float h, skyColor sc, precipitation prc, windType wt, float ws, 
-				//seaState st,tr,wd)
+			//seaState st,tr,wd)
 
 			if (windSpeed < 4 &&  (prc == Day.precipitation.rain || prc == Day.precipitation.storm))
 			{
@@ -394,16 +419,39 @@ public class WeatherController : MonoBehaviour {
 			incrementDay ();
 		}
 	}
-	void setInstruments(Day d) {
+
+
+	public void setInstruments(Day d) {
 		for (int i = 0; i < devices.Length; i++) {
 			if (d.season >= devices[i].unlockSeason) {
 				devices [i].set (d);
-				}
 			}
 		}
+	}
 		
 	void incrementDay(){
 		currentDay++;
+		win.setExterior (days [currentDay]);
+		printDay (days [currentDay]);
 		setInstruments (days[currentDay]);
+	}
+
+	void printDay(Day d) {
+		Debug.Log (d.Index);
+		Debug.Log (d.season);
+		Debug.Log (d.Temperature);
+		Debug.Log (d.Temprange);
+		Debug.Log (d.Anomaly);
+		Debug.Log (d.Pressure);
+		Debug.Log (d.PressureRange);
+		Debug.Log (d.Cloudcover);
+		Debug.Log (d.Fog);
+		Debug.Log (d.Humidity);
+		Debug.Log (d.Skycolor);
+		Debug.Log (d.Precipitation);
+		Debug.Log (d.Windtype);
+		Debug.Log (d.WindSpeed);
+		Debug.Log (d.Seastate);
+		Debug.Log (d.WindDirection);
 	}
 }

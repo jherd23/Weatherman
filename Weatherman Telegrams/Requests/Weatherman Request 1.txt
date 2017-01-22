@@ -1,0 +1,11 @@
+Dear Weatherman,
+
+	This is Captain Sparrow of the ship, "Seal Clubbers." You have quite
+	the legendary reputation amongst the townfolk around here; as a man
+	of exceptional intelligence and wisdom, I'd like to rely on your expertise
+	before I set sail.
+
+	Please relay <CONDITION> for today's report.
+
+Sincerely,
+Captain Sparrow

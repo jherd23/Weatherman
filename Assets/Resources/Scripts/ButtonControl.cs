@@ -11,14 +11,23 @@ public class ButtonControl : MonoBehaviour {
 	public Button button4; //save and quit
 	public bool gamePaused = false;
 	public bool onStart = true;
-	public bool firstTime = true;
+	public int saved = 0;
+
+	WeatherController WC;
 	// Use this for initialization
 	void Start () {
-		button1.gameObject.SetActive (false);
+		saved = PlayerPrefs.GetInt ("saved", 0);
+
+		Debug.Log (saved);
+
 		button4.gameObject.SetActive (false);
-		if (firstTime) {
+		if (saved == 0) {
 			button3.gameObject.SetActive (false);
+		} else {
+			button3.gameObject.SetActive (true);
 		}
+
+		WC = GameObject.Find ("WeatherAndSaveController").GetComponent<WeatherController> () as WeatherController;
 	}
 	
 	// Update is called once per frame
@@ -27,14 +36,14 @@ public class ButtonControl : MonoBehaviour {
 			if (Input.GetKeyDown (KeyCode.Escape)) {
 				if (gamePaused) {
 					button4.gameObject.SetActive (false);
-					if (!(firstTime)) {
+					if (saved == 1) {
 						button2.gameObject.SetActive (false);
 						button3.gameObject.SetActive (false);
 					}
 					gamePaused = false;
 				} else {
 					button4.gameObject.SetActive (true);
-					if (!(firstTime)) {
+					if (saved == 1) {
 						button2.gameObject.SetActive (true);
 						button3.gameObject.SetActive (true);
 					}
@@ -49,5 +58,18 @@ public class ButtonControl : MonoBehaviour {
 		onStart = false;
 		button2.gameObject.SetActive (false);
 		button3.gameObject.SetActive (false);
+
+	}
+
+	public void Resume() {
+		ExitStartMenu ();
+		GameObject.Find ("WeatherAndSaveController").GetComponent<SaveController> ().first = true;
+	}
+
+	public void New(){
+		ExitStartMenu ();
+		WC.New();
+		WC.win.setExterior (WC.days [0]);
+		WC.setInstruments (WC.days[0]);
 	}
 }

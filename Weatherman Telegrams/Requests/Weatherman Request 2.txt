@@ -1,0 +1,11 @@
+Forecaster!
+
+	This is Professor John Hillgensbury of Oxford University. As a renowned professor
+	in the new science deemed 'climatology,' I am in great need of climate data from
+	a variety of sources. Your station has been one of many selected for the purposes
+	of data collection. This is an honor not given to many weather forecasters.
+
+	Please relay <CONDITION> in your report as soon as possible.
+
+Best of luck,
+Professor John Hillgensbury
