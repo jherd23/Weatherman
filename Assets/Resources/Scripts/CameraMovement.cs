@@ -32,11 +32,7 @@ public class CameraMovement : MonoBehaviour {
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			if (Physics.Raycast(ray, out hit) && (hit.transform.parent != null)) {
 				obj = GameObject.Find(hit.transform.parent.name);
-<<<<<<< HEAD
-				if (obj.name == "anemometer") {
-=======
 				if (obj.name == "rainGauge" || obj.name == "anemometer") {
->>>>>>> cfe5b8f5f6a397499f814d48713bc288fa1c71e6
 					targetpos = new Vector3 (obj.transform.position.x, obj.transform.position.y + 500, transform.position.z);
 					targetFOV = initFOV;
 				} else {
