@@ -13,7 +13,7 @@ public class Day {
 	public float Temperature;
 	public temperatureRange Temprange;
 	public bool Anomaly;
-	float Pressure;
+	public float Pressure;
 	public pressureRange PressureRange;
 	public cloudCover Cloudcover;
 	bool Fog;
