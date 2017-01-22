@@ -41,6 +41,7 @@ ModelImporter:
     100066: //RootNode
     100068: transform1
     100070: transform2
+    100072: pasted__pSphere1
     400000: group
     400002: group1
     400004: group2
@@ -77,6 +78,7 @@ ModelImporter:
     400066: //RootNode
     400068: transform1
     400070: transform2
+    400072: pasted__pSphere1
     2300000: nurbsToPoly1
     2300002: nurbsToPoly2
     2300004: pasted__pasted__pasted__pasted__pCube1
@@ -96,6 +98,7 @@ ModelImporter:
     2300032: pSphere3
     2300034: pSphere4
     2300036: pTorus1
+    2300038: pasted__pSphere1
     3300000: nurbsToPoly1
     3300002: nurbsToPoly2
     3300004: pasted__pasted__pasted__pasted__pCube1
@@ -115,6 +118,7 @@ ModelImporter:
     3300032: pSphere3
     3300034: pSphere4
     3300036: pTorus1
+    3300038: pasted__pSphere1
     4300000: pCylinder1
     4300002: nurbsToPoly1
     4300004: nurbsToPoly2
@@ -134,6 +138,7 @@ ModelImporter:
     4300032: pSphere4
     4300034: pCylinder3
     4300036: pTorus1
+    4300038: pasted__pSphere1
     9500000: //RootNode
   materials:
     importMaterials: 1
