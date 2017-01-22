@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 2b9c1384fa874405fa69246db38bd4e3
+<<<<<<< HEAD
+guid: 42bcd2d606e1748cc92f9cc0ecad4a10
+=======
+guid: 0cd5f383409ff4318bd203c719169d36
+>>>>>>> origin/master
 folderAsset: yes
 timeCreated: 1485058949
 licenseType: Free
