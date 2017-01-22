@@ -75,13 +75,14 @@
 -define:UNITY_EDITOR
 -define:UNITY_EDITOR_64
 -define:UNITY_EDITOR_OSX
--define:UNITY_TEAM_LICENSE
+'Assets/Resources/Scripts/Anemometer.cs'
 'Assets/Resources/Scripts/Ball.cs'
 'Assets/Resources/Scripts/ButtonControl.cs'
 'Assets/Resources/Scripts/CameraMovement.cs'
 'Assets/Resources/Scripts/Day.cs'
 'Assets/Resources/Scripts/Device.cs'
 'Assets/Resources/Scripts/MouseSqueak.cs'
+'Assets/Resources/Scripts/StormGlass.cs'
 'Assets/Resources/Scripts/Thermometer.cs'
 'Assets/Resources/Scripts/WeatherController.cs'
 'Assets/Resources/Scripts/WeatherVane.cs'
