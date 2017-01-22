@@ -180,7 +180,7 @@ public class WeatherController : MonoBehaviour {
 			}
 
 
-			tempSubtractFromNext -= cloudThickness * 10;
+			tempSubtractFromNext = cloudThickness * 10;
 
 
 			//Day(Temperature, Pressure, pressureRange p, cloudCover c, bool fog, float h, skyColor sc, precipitation prc, windType wt, float ws, 
