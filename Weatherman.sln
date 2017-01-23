@@ -1,7 +1,7 @@
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{098B8D88-8041-FFCA-42F2-A1516F370027}") = "Weatherman", "Assembly-CSharp.csproj", "{62F025F0-9BE0-808E-746C-58ED4EBF160C}"
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weatherman.CSharp", "Weatherman.CSharp.csproj", "{EF0E060D-F9F8-451F-1D07-54E5AAFF111E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,15 +9,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{62F025F0-9BE0-808E-746C-58ED4EBF160C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{62F025F0-9BE0-808E-746C-58ED4EBF160C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{62F025F0-9BE0-808E-746C-58ED4EBF160C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{62F025F0-9BE0-808E-746C-58ED4EBF160C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF0E060D-F9F8-451F-1D07-54E5AAFF111E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF0E060D-F9F8-451F-1D07-54E5AAFF111E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF0E060D-F9F8-451F-1D07-54E5AAFF111E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF0E060D-F9F8-451F-1D07-54E5AAFF111E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal

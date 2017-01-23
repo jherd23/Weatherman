@@ -10,17 +10,20 @@ public class Plane_Script : MonoBehaviour {
 	public AudioSource aus;
 	float timer;
 
+    bool first;
+
 	void Start () {
 		r = this.gameObject.GetComponent < MeshRenderer >();
-		alphaTarget = 1;
+		alphaTarget = 0;
 		timer = 0.0f;
+        first = true;
 	}
 
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			Debug.Log ("changing the day");
-			ChangeDay ();
+            ChangeDay();      
 		}
 
 		timer += 0.5f * Time.deltaTime;
@@ -46,6 +49,9 @@ public class Plane_Script : MonoBehaviour {
 		r.enabled = true;
 		timer = 0.0f;
 		alphaTarget = 1;
-		aus.Play ();
+        if (!first)
+        
+        aus.Play();
+        
 	}
 }

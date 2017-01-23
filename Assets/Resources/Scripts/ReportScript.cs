@@ -113,7 +113,6 @@ public class ReportScript : MonoBehaviour {
 	}
 
 	void UpdateDay(Day newDay) {
-
 		WC.incrementDay();
 		today = newDay;
 	}

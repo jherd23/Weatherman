@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EF0E060D-F9F8-451F-1D07-54E5AAFF111E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
+    <CompilerResponseFile></CompilerResponseFile>
+    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityBuildTarget>StandaloneOSXIntel:4</UnityBuildTarget>
+    <UnityVersion>5.5.0f3</UnityVersion>
+    <RootNamespace></RootNamespace>
+    <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Debug\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_5_0;UNITY_5_5;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;UNITY_STANDALONE_OSX;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_GAMECENTER;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_VIDEO;ENABLE_VR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU</DefineConstants>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Release\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_5_0;UNITY_5_5;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;UNITY_STANDALONE_OSX;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_GAMECENTER;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_VIDEO;ENABLE_VR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU</DefineConstants>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Core" />
+    <Reference Include="Boo.Lang" />
+    <Reference Include="UnityScript.Lang" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEngine">
+      <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PlaymodeTestsRunner">
+      <HintPath>Library\UnityAssemblies\UnityEngine.PlaymodeTestsRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HoloLens">
+      <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VR">
+      <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Resources\Scripts\Anemometer.cs" />
+    <Compile Include="Assets\Resources\Scripts\Ball.cs" />
+    <Compile Include="Assets\Resources\Scripts\ButtonControl.cs" />
+    <Compile Include="Assets\Resources\Scripts\CameraMovement.cs" />
+    <Compile Include="Assets\Resources\Scripts\Clickable.cs" />
+    <Compile Include="Assets\Resources\Scripts\Cloud.cs" />
+    <Compile Include="Assets\Resources\Scripts\CloudSpawner.cs" />
+    <Compile Include="Assets\Resources\Scripts\Day.cs" />
+    <Compile Include="Assets\Resources\Scripts\Device.cs" />
+    <Compile Include="Assets\Resources\Scripts\MouseSqueak.cs" />
+    <Compile Include="Assets\Resources\Scripts\Plane_Script.cs" />
+    <Compile Include="Assets\Resources\Scripts\RainGauge.cs" />
+    <Compile Include="Assets\Resources\Scripts\ReportScript.cs" />
+    <Compile Include="Assets\Resources\Scripts\SaveController.cs" />
+    <Compile Include="Assets\Resources\Scripts\StormGlass.cs" />
+    <Compile Include="Assets\Resources\Scripts\Thermometer.cs" />
+    <Compile Include="Assets\Resources\Scripts\WeatherController.cs" />
+    <Compile Include="Assets\Resources\Scripts\WeatherVane.cs" />
+    <Compile Include="Assets\Resources\Scripts\WindowOpener.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Resources\Weatherman Telegrams\Negative Telegrams\WeathermanNegative1.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Negative Telegrams\WeathermanNegative10.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Negative Telegrams\WeathermanNegative11.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Negative Telegrams\WeathermanNegative12.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Negative Telegrams\WeathermanNegative2.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Negative Telegrams\WeathermanNegative3.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Negative Telegrams\WeathermanNegative4.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Negative Telegrams\WeathermanNegative5.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Negative Telegrams\WeathermanNegative6.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Negative Telegrams\WeathermanNegative7.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Negative Telegrams\WeathermanNegative8.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Negative Telegrams\WeathermanNegative9.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Positive Telegrams\Weatherman Positive 1.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Positive Telegrams\Weatherman Positive 10.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Positive Telegrams\Weatherman Positive 11.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Positive Telegrams\Weatherman Positive 12.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Positive Telegrams\Weatherman Positive 2.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Positive Telegrams\Weatherman Positive 3.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Positive Telegrams\Weatherman Positive 4.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Positive Telegrams\Weatherman Positive 5.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Positive Telegrams\Weatherman Positive 6.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Positive Telegrams\Weatherman Positive 7.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Positive Telegrams\Weatherman Positive 8.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Positive Telegrams\Weatherman Positive 9.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Random Telegrams\RandomTelegram1.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Random Telegrams\RandomTelegram10.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Random Telegrams\RandomTelegram11.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Random Telegrams\RandomTelegram12.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Random Telegrams\RandomTelegram13.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Random Telegrams\RandomTelegram14.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Random Telegrams\RandomTelegram15.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Random Telegrams\RandomTelegram16.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Random Telegrams\RandomTelegram17.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Random Telegrams\RandomTelegram18.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Random Telegrams\RandomTelegram2.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Random Telegrams\RandomTelegram3.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Random Telegrams\RandomTelegram4.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Random Telegrams\RandomTelegram5.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Random Telegrams\RandomTelegram6.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Random Telegrams\RandomTelegram7.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Random Telegrams\RandomTelegram8.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Random Telegrams\RandomTelegram9.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Random Telegrams\Weatherman 1.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Random Telegrams\Weatherman 2.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Random Telegrams\Weatherman 3.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Random Telegrams\Weatherman 4.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Random Telegrams\Weatherman 5.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Requests\Weatherman Request 1.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Requests\Weatherman Request 10.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Requests\Weatherman Request 2.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Requests\Weatherman Request 3.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Requests\Weatherman Request 4.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Requests\Weatherman Request 5.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Requests\Weatherman Request 6.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Requests\Weatherman Request 7.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Requests\Weatherman Request 8.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Requests\Weatherman Request 9.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Story Telegrams\MoreDataRequiredTemplate.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Story Telegrams\ObtainingGenericDevice.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Story Telegrams\ObtainingGenericDevice2.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Story Telegrams\ObtainingGenericDevice3.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Story Telegrams\ObtainingHygrometer.txt" />
+    <None Include="Assets\Resources\Weatherman Telegrams\Story Telegrams\ObtainingStormGlass.txt" />
+    <None Include="Assets\double_sided.shader" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
+</Project>

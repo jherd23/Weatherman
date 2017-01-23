@@ -21,6 +21,8 @@ public class CloudSpawner : MonoBehaviour {
 
 	public WeatherController wc;
 
+    public GameObject Rainer;
+
 	float cooldown;
 
 	Day currentday;
@@ -39,6 +41,15 @@ public class CloudSpawner : MonoBehaviour {
 		if (currentday == null) {
 			return;
 		}
+
+        if(directionToDegrees(currentday.WindDirection) >= 180)
+        {
+            Rainer.transform.rotation = new Quaternion(Rainer.transform.rotation.x, 180, Rainer.transform.rotation.z, Rainer.transform.rotation.w);
+        } else
+        {
+            Rainer.transform.rotation = new Quaternion(Rainer.transform.rotation.x, 0, Rainer.transform.rotation.z, Rainer.transform.rotation.w);
+        }
+
 		cooldown -= Time.deltaTime;
 		if (cooldown < 0) {
 			if (currentday.Cloudcover == Day.cloudCover.partly_cloudy) {
@@ -63,11 +74,13 @@ public class CloudSpawner : MonoBehaviour {
 				clouds.RemoveAt (i);
 				Destroy (temp);
 			} else if (clouds[i].transform.position.x < -1100 && directionToDegrees(currentday.WindDirection) < 180) {
-				GameObject temp = clouds [i];
+               
+                GameObject temp = clouds [i];
 				clouds.RemoveAt (i);
 				Destroy (temp);
 			}
 		}
+        
 	}
 
 	float directionToDegrees(Day.windDirection r) {

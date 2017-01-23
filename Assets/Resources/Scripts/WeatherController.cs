@@ -15,6 +15,8 @@ public class WeatherController : MonoBehaviour {
 
 	public WindowOpener win;
 
+    bool first;
+
 	public int currentDay = 0;
 	// contains bools for prediction required by each day
 
@@ -73,6 +75,7 @@ public class WeatherController : MonoBehaviour {
 		days = new Day[daysPerSeason * numberOfSeasons];
 		predictions = new bool[72][];
 		randomStagger = Random.Range(-Mathf.PI,Mathf.PI);
+        first = true;
 
 		//sinusoidal model
 		New();
@@ -428,10 +431,16 @@ public class WeatherController : MonoBehaviour {
 	}
 		
 	public void incrementDay(){
-		currentDay++;
-		win.setExterior (days [currentDay]);
-		printDay (days [currentDay]);
-		setInstruments (days[currentDay]);
+        if (!first)
+        {
+            currentDay++;
+            win.setExterior(days[currentDay]);
+            printDay(days[currentDay]);
+            setInstruments(days[currentDay]);
+        } else
+        {
+            first = false;
+        }
 	}
 
 	void printDay(Day d) {

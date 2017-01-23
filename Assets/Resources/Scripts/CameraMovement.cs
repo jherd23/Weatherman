@@ -25,9 +25,15 @@ public class CameraMovement : MonoBehaviour {
 
 	public Button b;
 
+    public Button i;
+    public Button i2;
+    public Button i3;
+    public Button i4;
+    public Button i5;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
+
 		initpos = transform.position;
 		initFOV = Camera.main.fieldOfView;
 		initRotation = transform.localEulerAngles;
@@ -49,50 +55,6 @@ public class CameraMovement : MonoBehaviour {
 			b.GetComponentInChildren<Text> ().enabled = false;
 		}
 
-		if (Input.GetMouseButtonDown(0)) {
-
-			RaycastHit hit;
-			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-			if (Physics.Raycast(ray, out hit) && (hit.transform.parent != null) ) {
-				obj = GameObject.Find(hit.transform.parent.name);
-				Debug.Log ("ugh");
-				if (obj.name == "rainGauge") {
-					targetpos = new Vector3 (obj.transform.position.x, obj.transform.position.y + 500, transform.position.z);
-				} else if (obj.name == "anemometer") {
-					targetpos = new Vector3 (obj.transform.position.x, obj.transform.position.y + 400, transform.position.z);
-				} else {
-					targetpos = new Vector3 (obj.transform.position.x, obj.transform.position.y + 170, transform.position.z);
-				}
-				targetFOV = 18;
-				if (transform.position.x > obj.transform.position.x) {
-					dir = false;
-				} else { 
-					dir = true;
-				}
-				moving = true;
-				UI = false;
-				targetRotation = initRotation;
-
-				if (obj.name == "rainGauge" || obj.name == "anemometer") {
-					targetpos = new Vector3 (obj.transform.position.x, obj.transform.position.y + 500, transform.position.z);
-					targetFOV = initFOV;
-				} else {
-					targetpos = new Vector3 (obj.transform.position.x, obj.transform.position.y + 200, transform.position.z);
-					targetFOV = 18;
-				}
-//				if (obj.CompareTag ("clickable")) {
-					if (transform.position.x > obj.transform.position.x) {
-						dir = false;
-					} else { 
-						dir = true;
-					}
-					moving = true;
-//				}
-
-			}
-		}
-
 		if (moving) {
 			transform.position = Vector3.SmoothDamp (transform.position, targetpos, ref posVelocity, 2.0f);
 			Camera.main.fieldOfView = Mathf.SmoothDamp (Camera.main.fieldOfView, targetFOV, ref fovVelocity, 2.0f);
@@ -104,9 +66,15 @@ public class CameraMovement : MonoBehaviour {
 	public void resetView() {
 		targetpos = initpos;
 		targetFOV = initFOV;
-		b.image.enabled = true;
+        targetRotation = initRotation;
+        b.image.enabled = true;
 		b.GetComponentInChildren<Text> ().enabled = true;
-	}
+        i.enabled = true;
+        i2.enabled = true;
+        i3.enabled = true;
+        i4.enabled = true;
+        i5.enabled = true;
+    }
 
 	public void focusUI(string name) {
 		if (name == "stormglass note") {
@@ -116,20 +84,45 @@ public class CameraMovement : MonoBehaviour {
 		} else if (name == "cardinal1" || name == "cardinal2" || name == "cardinal3" || name == "cardinal4") {
 			obj = GameObject.Find ("weatervane");
 		}
-//
-//		if (obj.name == "rainGauge") {
-//			targetpos = new Vector3 (obj.transform.position.x, obj.transform.position.y + 500, transform.position.z);
-//		} else if (obj.name == "anemometer") {
-//			targetpos = new Vector3 (obj.transform.position.x, obj.transform.position.y + 400, transform.position.z);
-//		} else {
-			targetpos = new Vector3 (obj.transform.position.x, obj.transform.position.y + 170, transform.position.z);
-//		}
 
+		targetpos = new Vector3 (obj.transform.position.x, obj.transform.position.y + 170, transform.position.z);
 
 		targetFOV = 5;
 		targetRotation = new Vector3 (transform.localEulerAngles.x + 5.0f, transform.localEulerAngles.y, transform.localEulerAngles.z);
 		UI = true;
 		moving = true;
-	}
+
+        b.image.enabled = true;
+        b.GetComponentInChildren<Text>().enabled = true;
+        i.enabled = false;
+        i2.enabled = false;
+        i3.enabled = false;
+        i4.enabled = false;
+        i5.enabled = false;
+    }
+
+    public void focusObj(GameObject obj)
+    {
+        //moving = true;
+        targetpos = new Vector3(obj.transform.position.x, obj.transform.position.y + 200, transform.position.z);
+        targetFOV = 18;
+        if (transform.position.x > obj.transform.position.x)
+        {
+            dir = false;
+        }
+        else
+        {
+            dir = true;
+        }
+        moving = true;
+        targetRotation = initRotation;
+        b.image.enabled = true;
+        b.GetComponentInChildren<Text>().enabled = true;
+        i.enabled = false;
+        i2.enabled = false;
+        i3.enabled = false;
+        i4.enabled = false;
+        i5.enabled = false;
+    }
 
 }
