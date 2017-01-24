@@ -13,7 +13,7 @@ public class WindowOpener : MonoBehaviour {
 
 	public GameObject rainer;
     public GameObject snower;
-    public WeatherController WC;
+    public GameObject WC;
 
 	float lastPos;
 	bool moving;
@@ -76,6 +76,7 @@ public class WindowOpener : MonoBehaviour {
 		}
 
 		if (Rain) {
+			
             if (WC.GetComponent<WeatherController>().days[WC.GetComponent<WeatherController>().currentDay].Precipitation == Day.precipitation.snow || 
                 WC.GetComponent<WeatherController>().days[WC.GetComponent<WeatherController>().currentDay].Precipitation == Day.precipitation.blizzard)
             {

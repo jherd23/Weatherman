@@ -14,6 +14,13 @@ public class SaveController : MonoBehaviour {
 
 	public bool first;
 
+	public GameObject text1;
+	public GameObject text2;
+	public GameObject text3;
+	public GameObject text4;
+	public GameObject text5;
+	public GameObject text6;
+
 	// Use this for initialization
 	void Awake()
 	{
@@ -32,6 +39,7 @@ public class SaveController : MonoBehaviour {
 	{
 		WC = this.gameObject.GetComponent<WeatherController> () as WeatherController;
 		first = true;
+
 	}
 
 	void Update(){
@@ -41,6 +49,7 @@ public class SaveController : MonoBehaviour {
 			this.gameObject.GetComponent<WeatherController> ().setInstruments (WC.days [WC.currentDay]);
 			GameObject.Find ("WindowPane").GetComponent<WindowOpener> ().setExterior (WC.days [WC.currentDay]);
 		}
+
 	}
 
 	void OnGUI()
@@ -91,6 +100,12 @@ public class SaveController : MonoBehaviour {
 		WC.days = data.days;
 		control.value = data.sliderPos;
 		WC.predictions = data.predictions;
+		text1.GetComponent<Text> ().text = data.t1;
+		text2.GetComponent<Text> ().text = data.t2;
+		text3.GetComponent<Text> ().text = data.t3;
+		text4.GetComponent<Text> ().text = data.t4;
+		text5.GetComponent<Text> ().text = data.t5;
+		text6.GetComponent<Text> ().text = data.t6;
 	}
 
 	private SaveData WriteToData () //saving 
@@ -103,6 +118,12 @@ public class SaveController : MonoBehaviour {
 		data.days = WC.days;
 		data.predictions = WC.predictions;
 		data.sliderPos = control.value;
+		data.t1 = text1.GetComponent<Text> ().text;
+		data.t2 = text2.GetComponent<Text> ().text;
+		data.t3 = text3.GetComponent<Text> ().text;
+		data.t4 = text4.GetComponent<Text> ().text;
+		data.t5 = text5.GetComponent<Text> ().text;
+		data.t6 = text6.GetComponent<Text> ().text;
 		return data;
 	}
 }
@@ -117,4 +138,11 @@ class SaveData
 	public Day[] days;
 	public bool[][] predictions;
 	public float sliderPos;
+	public string t1;
+	public string t2;
+	public string t3;
+	public string t4;
+	public string t5;
+	public string t6;
+
 }

@@ -54,13 +54,13 @@ public class CloudSpawner : MonoBehaviour {
 		if (cooldown < 0) {
 			if (currentday.Cloudcover == Day.cloudCover.partly_cloudy) {
 				GameObject newCloud = GameObject.Instantiate (Resources.Load (partlyCloudyPrefabs [Random.Range (0, partlyCloudyPrefabs.Length)]) as GameObject);
-				newCloud.GetComponent<Cloud> ().speed = currentday.WindSpeed * 30 * (directionToDegrees (currentday.WindDirection) >= 180 ? -1 : 1);
+				newCloud.GetComponent<Cloud> ().speed = currentday.WindSpeed * 20 * (directionToDegrees (currentday.WindDirection) >= 180 ? -1 : 1);
 				newCloud.transform.position = new Vector3 (directionToDegrees (currentday.WindDirection) >= 180 ? -1100 : 1100, height + Random.Range (0f, 150f), -600);
 				newCloud.transform.localScale = Random.Range (1, maxScale) * newCloud.transform.localScale;
 				clouds.Add (newCloud);
 			} else if (currentday.Cloudcover == Day.cloudCover.overcast) {
 				GameObject newCloud = GameObject.Instantiate (Resources.Load (overcastPrefabs [Random.Range (0, overcastPrefabs.Length)]) as GameObject);
-				newCloud.GetComponent<Cloud> ().speed = currentday.WindSpeed * 30 * (directionToDegrees (currentday.WindDirection) >= 180 ? -1 : 1);
+				newCloud.GetComponent<Cloud> ().speed = currentday.WindSpeed * 20 * (directionToDegrees (currentday.WindDirection) >= 180 ? -1 : 1);
 				newCloud.transform.position = new Vector3 (directionToDegrees (currentday.WindDirection) >= 180 ? -1100 : 1100, height + Random.Range (0f, 150f), -600);
 				newCloud.transform.localScale = Random.Range (1, maxScale) * newCloud.transform.localScale;
 				clouds.Add (newCloud);

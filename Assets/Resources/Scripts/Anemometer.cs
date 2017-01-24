@@ -37,7 +37,7 @@ public class Anemometer : Device {
 	}
 
 	public override void set (Day d) {
-		windSpeed = d.WindSpeed * 72;
+		windSpeed = d.WindSpeed * 50;//72;
 	}
 
 	void spin(float degrees) {

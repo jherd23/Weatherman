@@ -18,7 +18,7 @@ public class ButtonControl : MonoBehaviour {
 	void Start () {
 		saved = PlayerPrefs.GetInt ("saved", 0);
 
-		Debug.Log (saved);
+		//Debug.Log (saved);
 
 		button4.gameObject.SetActive (false);
 		if (saved == 0) {
