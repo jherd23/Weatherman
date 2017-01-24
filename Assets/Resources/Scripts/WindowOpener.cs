@@ -12,6 +12,8 @@ public class WindowOpener : MonoBehaviour {
 	public bool Rain;
 
 	public GameObject rainer;
+    public GameObject snower;
+    public WeatherController WC;
 
 	float lastPos;
 	bool moving;
@@ -74,23 +76,34 @@ public class WindowOpener : MonoBehaviour {
 		}
 
 		if (Rain) {
-			ausRoofRain.volume = 1.0f;
-			ausRain.volume = 1.0f;
-			rainer.GetComponent<SpriteRenderer> ().enabled = true;
+            if (WC.GetComponent<WeatherController>().days[WC.GetComponent<WeatherController>().currentDay].Precipitation == Day.precipitation.snow || 
+                WC.GetComponent<WeatherController>().days[WC.GetComponent<WeatherController>().currentDay].Precipitation == Day.precipitation.blizzard)
+            {
+                snower.GetComponent<SpriteRenderer>().enabled = true;
+            }
+            else
+            {
+                ausRoofRain.volume = 1.0f;
+                ausRain.volume = 1.0f;
+                rainer.GetComponent<SpriteRenderer>().enabled = true;
+            }
 			if (Fair) {
 				rain.audioMixer.SetFloat ("volRainOutside", 9);
 				roof.audioMixer.SetFloat ("volRoof", 4);
 				rainer.GetComponent<SpriteRenderer> ().color = new Color (255f,255f,255f, 0.2f);
-			} else {
+                snower.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 0.2f);
+            } else {
 				rain.audioMixer.SetFloat ("volRainOutside", 15);
 				roof.audioMixer.SetFloat ("volRoof", 14);
 				rainer.GetComponent<SpriteRenderer> ().color = new Color (255f, 255f,255f, 1f);
-			}
+                snower.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 0.8f);
+            }
 		} else {
 			ausRoofRain.volume = 0.0f;
 			ausRain.volume = 0.0f;
 			rainer.GetComponent<SpriteRenderer> ().enabled = false;
-		}
+            snower.GetComponent<SpriteRenderer>().enabled = false;
+        }
 
 		if (control.value != lastPos) {
 			ausWindowSqueak.volume = 0.7f;
