@@ -119,7 +119,7 @@ public class ReportScript : MonoBehaviour {
 
 	int Verify() {
 		wellbeingMod = 0;
-		if (Predictions[0]) {
+		/*if (Predictions[0]) {
 			InputField tempInput = Temperature.GetComponent<InputField>();
 			Text tempText = tempInput.textComponent;
 			wellbeingMod -= (int) ( ( Mathf.Abs(ourTemp - Convert.ToInt32(tempText.text) )-10)/1.5f );
@@ -220,7 +220,7 @@ public class ReportScript : MonoBehaviour {
 			Dropdown seaT = SeaState.GetComponent<Dropdown>();
 			int choice = seaT.value;
 			wellbeingMod -= (int)(Mathf.Abs(ourSeaState - choice) - 3) * 7;
-		}
+		}*/
 
 		return wellbeingMod;
 	}

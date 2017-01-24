@@ -33,7 +33,6 @@ public class CameraMovement : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-
 		initpos = transform.position;
 		initFOV = Camera.main.fieldOfView;
 		initRotation = transform.localEulerAngles;
@@ -77,18 +76,36 @@ public class CameraMovement : MonoBehaviour {
     }
 
 	public void focusUI(string name) {
+		float f = 5.0f;
+
 		if (name == "stormglass note") {
 			obj = GameObject.Find ("fitzroystormglass");
+			f = 6.0f;
+			targetFOV = 8;
 		} else if (name == "galilean note") {
 			obj = GameObject.Find ("galilean");
+			f = 9.0f;
+			targetFOV = 13;
 		} else if (name == "cardinal1" || name == "cardinal2" || name == "cardinal3" || name == "cardinal4") {
 			obj = GameObject.Find ("weatervane");
+			f = 10.0f;
+			targetFOV = 9;
 		}
 
-		targetpos = new Vector3 (obj.transform.position.x, obj.transform.position.y + 170, transform.position.z);
+		if (name == "sidewall") {
+			obj = GameObject.Find ("ReportSprite");
+			f = 270.0f;
 
-		targetFOV = 5;
-		targetRotation = new Vector3 (transform.localEulerAngles.x + 5.0f, transform.localEulerAngles.y, transform.localEulerAngles.z);
+			targetFOV = 20;
+			targetpos = new Vector3 (0, obj.transform.position.y+60, obj.transform.position.z);
+			targetRotation = new Vector3 (transform.localEulerAngles.x, f, transform.localEulerAngles.z);
+		} else {
+
+			targetpos = new Vector3 (obj.transform.position.x, obj.transform.position.y * 2, transform.position.z);
+
+			//targetFOV = 8;
+			targetRotation = new Vector3 (/*transform.localEulerAngles.x*/ f, transform.localEulerAngles.y, transform.localEulerAngles.z);
+		}
 		UI = true;
 		moving = true;
 

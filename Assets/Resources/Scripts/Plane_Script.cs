@@ -10,10 +10,15 @@ public class Plane_Script : MonoBehaviour {
 	public AudioSource aus;
 	float timer;
 
+	float waiting;
+	bool wait;
+
 	void Start () {
 		r = this.gameObject.GetComponent < MeshRenderer >();
 		alphaTarget = 0;
 		timer = 0.0f;
+		waiting = 0.0f;
+		wait = false;
 	}
 
 	// Update is called once per frame
@@ -40,12 +45,25 @@ public class Plane_Script : MonoBehaviour {
 			r.material.color = new Color (0.0f, 0.0f, 0.0f, r.material.color.a+0.5f * Time.deltaTime);
 		}
 			
+		if (wait) {
+			waiting += 0.5f * Time.deltaTime;
+			if (waiting > 2.3) {
+				waiting = 0;
+				ChangeDay ();
+			}
+		}
 	}
 
-	void ChangeDay(){
+	public void ChangeDay(){
 		r.enabled = true;
 		timer = 0.0f;
 		alphaTarget = 1;
 		aus.Play ();
+		wait = false;
+	}
+
+	public void ChangeDayOut(){
+		Camera.main.GetComponent<CameraMovement> ().resetView ();
+		wait = true;
 	}
 }

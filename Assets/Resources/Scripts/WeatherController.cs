@@ -429,12 +429,12 @@ public class WeatherController : MonoBehaviour {
 	}
 		
 	public void incrementDay(){
-
-		currentDay++;
-		win.setExterior (days [currentDay]);
-		printDay (days [currentDay]);
-		setInstruments (days [currentDay]);
-	
+		if (currentDay < days.Length) {
+			currentDay++;
+			win.setExterior (days [currentDay]);
+			printDay (days [currentDay]);
+			setInstruments (days [currentDay]);
+		}
 	}
 
 	void printDay(Day d) {
