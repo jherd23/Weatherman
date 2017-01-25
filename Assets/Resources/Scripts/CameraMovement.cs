@@ -24,6 +24,7 @@ public class CameraMovement : MonoBehaviour {
 	private float initFOV;
 
 	public Button b;
+    public Button info;
 
     public Button i;
     public Button i2;
