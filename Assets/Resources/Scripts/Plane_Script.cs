@@ -13,12 +13,15 @@ public class Plane_Script : MonoBehaviour {
 	float waiting;
 	bool wait;
 
+    bool newgame;
+
 	void Start () {
 		r = this.gameObject.GetComponent < MeshRenderer >();
 		alphaTarget = 0;
 		timer = 0.0f;
 		waiting = 0.0f;
 		wait = false;
+        newgame = false;
 	}
 
 	// Update is called once per frame
@@ -32,8 +35,16 @@ public class Plane_Script : MonoBehaviour {
 
 		if (timer > 1.5f && alphaTarget == 1) {
 			alphaTarget = 0;
-			GameObject.Find ("WeatherAndSaveController").GetComponent<WeatherController> ().incrementDay ();
-		}
+            WeatherController WC = GameObject.Find("WeatherAndSaveController").GetComponent<WeatherController>();
+            if (newgame)
+            {
+                WC.New();
+                WC.win.setExterior(WC.days[0]);
+                WC.setInstruments(WC.days[0]);
+                newgame = false;
+            }
+            WC.incrementDay();
+        }
 
 		if (timer > 3.0) {
 			r.enabled = false;
@@ -61,6 +72,12 @@ public class Plane_Script : MonoBehaviour {
 		aus.Play ();
 		wait = false;
 	}
+
+    public void NewDay()
+    {
+        newgame = true;
+        ChangeDay();
+    }
 
 	public void ChangeDayOut(){
 		Camera.main.GetComponent<CameraMovement> ().resetView ();

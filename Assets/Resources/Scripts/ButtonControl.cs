@@ -63,13 +63,11 @@ public class ButtonControl : MonoBehaviour {
 
 	public void Resume() {
 		ExitStartMenu ();
-		GameObject.Find ("WeatherAndSaveController").GetComponent<SaveController> ().first = true;
+		//GameObject.Find ("WeatherAndSaveController").GetComponent<SaveController> ().first = true;
 	}
 
 	public void New(){
 		ExitStartMenu ();
-		WC.New();
-		WC.win.setExterior (WC.days [0]);
-		WC.setInstruments (WC.days[0]);
-	}
+        GameObject.Find("Plane").GetComponent<Plane_Script>().NewDay();
+    }
 }

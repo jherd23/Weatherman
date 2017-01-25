@@ -81,8 +81,9 @@ public class WeatherController : MonoBehaviour {
 	}
 
 	public void New(){
+        currentDay = 0;
 
-		avgTemp = 55;
+        avgTemp = 55;
 		ampTemp = 30;
 		varianceTemp = 2;
 
