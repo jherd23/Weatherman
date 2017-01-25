@@ -96,7 +96,7 @@ public class CameraMovement : MonoBehaviour {
 			obj = GameObject.Find ("ReportSprite");
 			f = 270.0f;
 
-			targetFOV = 20;
+			targetFOV = 22;
 			targetpos = new Vector3 (0, obj.transform.position.y+60, obj.transform.position.z);
 			targetRotation = new Vector3 (transform.localEulerAngles.x, f, transform.localEulerAngles.z);
 		} else {

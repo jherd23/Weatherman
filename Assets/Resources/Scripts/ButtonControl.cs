@@ -9,6 +9,7 @@ public class ButtonControl : MonoBehaviour {
 	public Button button2; //newgame
 	public Button button3; //resume
 	public Button button4; //save and quit
+    public Text t; //signature
 	public bool gamePaused = false;
 	public bool onStart = true;
 	public int saved = 0;
@@ -36,17 +37,17 @@ public class ButtonControl : MonoBehaviour {
 			if (Input.GetKeyDown (KeyCode.Escape)) {
 				if (gamePaused) {
 					button4.gameObject.SetActive (false);
-					if (saved == 1) {
+					/*if (saved == 1) {
 						button2.gameObject.SetActive (false);
 						button3.gameObject.SetActive (false);
-					}
+					}*/
 					gamePaused = false;
 				} else {
 					button4.gameObject.SetActive (true);
-					if (saved == 1) {
+					/*if (saved == 1) {
 						button2.gameObject.SetActive (true);
 						button3.gameObject.SetActive (true);
-					}
+					}*/
 					gamePaused = true;
 				}
 			}
@@ -58,8 +59,8 @@ public class ButtonControl : MonoBehaviour {
 		onStart = false;
 		button2.gameObject.SetActive (false);
 		button3.gameObject.SetActive (false);
-
-	}
+        t.gameObject.SetActive(false);
+    }
 
 	public void Resume() {
 		ExitStartMenu ();

@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 241e9a398e0a2604eab7cfa2905e7663
+timeCreated: 1485303887
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 40
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Hijrnotes PERSONAL USE ONLY
+  fontNames:
+  - weatherman
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
