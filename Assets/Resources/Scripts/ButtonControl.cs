@@ -9,6 +9,7 @@ public class ButtonControl : MonoBehaviour {
 	public Button button2; //newgame
 	public Button button3; //resume
 	public Button button4; //save and quit
+	public Button info;
     public Text t; //signature
 	public bool gamePaused = false;
 	public bool onStart = true;

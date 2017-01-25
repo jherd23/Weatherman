@@ -25,6 +25,8 @@ public class CameraMovement : MonoBehaviour {
 
 	public Button b;
     public Button info;
+	public Text t;
+	public Button tButton;
 
     public Button i;
     public Button i2;
@@ -68,6 +70,9 @@ public class CameraMovement : MonoBehaviour {
 		targetFOV = initFOV;
         targetRotation = initRotation;
         b.image.enabled = true;
+		info.image.enabled = false;
+		tButton.image.enabled = false;
+		t.enabled = false;
 		b.GetComponentInChildren<Text> ().enabled = true;
         i.enabled = true;
         i2.enabled = true;
@@ -135,12 +140,31 @@ public class CameraMovement : MonoBehaviour {
         moving = true;
         targetRotation = initRotation;
         b.image.enabled = true;
+		info.image.enabled = true;
+
         b.GetComponentInChildren<Text>().enabled = true;
         i.enabled = false;
         i2.enabled = false;
         i3.enabled = false;
         i4.enabled = false;
         i5.enabled = false;
+
+		if (obj.name == "weathervane") {
+			t.text = "History tells us that the first Weathercock sat on the roof of the Tower of the Winds in the agora, or marketplace, of Athens, Greece. The Weathercock is used to tell the direction of the wind. However, this one appears to be missing its labels...";
+		} else if (obj.name == "rainGauge") {
+			t.text = "The Pluviometer was first developed by the people of Magadha in India to record rainfall. Readings were correlated against crop yields for several years until they become reliable enough to be used as a basis for land taxes. Hopefully this instrument can prove as profitable.";
+		} else if (obj.name == "galilean") {
+			t.text = "Named after Galileo's own Thermoscope, this Thermometer was invented by his pupil, Torricelli of Florance in the seventeenth century. The bobbles inside, filled with arcane elements and compounds rise and fall with the temperature, but which elements indicate heat and which cold?";
+		} else if (obj.name == "fitzroystormglass") {
+			t.text = "This 'Storm Glass' was invented by Admiral Fitzroy while aboard the HMS Beagle with Charles Darwin. Its results are questionable, but he clained one could read the barometric pressure by the presence of crystals in the flask. On the ship, he and Darwin used it to adhear to the Beaufort wind scale for weather forcasting";
+		} else {
+			t.text = "Invented by Dr. John Thomas Romney Robinson in 1845, the Cup anemometer is used to tell wind speed. It isn't very precise, but it should reliable tell us when to board up the windows and warn the townsfolk.";
+		}
     }
+
+	public void Info(){
+		tButton.image.enabled = !tButton.image.enabled;
+		t.enabled = !t.enabled;
+	}
 
 }

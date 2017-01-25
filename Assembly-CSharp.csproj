@@ -57,6 +57,7 @@
      <Compile Include="Assets\Resources\Scripts\Device.cs" />
      <Compile Include="Assets\Resources\Scripts\MouseSqueak.cs" />
      <Compile Include="Assets\Resources\Scripts\Plane_Script.cs" />
+     <Compile Include="Assets\Resources\Scripts\ProperPlacement.cs" />
      <Compile Include="Assets\Resources\Scripts\RainGauge.cs" />
      <Compile Include="Assets\Resources\Scripts\ReportScript.cs" />
      <Compile Include="Assets\Resources\Scripts\SaveController.cs" />
