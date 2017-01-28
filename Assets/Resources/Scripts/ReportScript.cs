@@ -39,6 +39,8 @@ public class ReportScript : MonoBehaviour {
 
 	public int wellbeingMod;
 
+    public int notice = 0;
+
 	bool haveMadeVariables = false;
 
 	int ourDay = 0;
@@ -54,7 +56,7 @@ public class ReportScript : MonoBehaviour {
 	public int ourPrecipitation;
 	public int ourWindType;
 	public float ourWindStrength;
-	public int ourWindDirection;
+	public float ourWindDirection;
 	public int ourSeaState;
 
 
@@ -94,7 +96,7 @@ public class ReportScript : MonoBehaviour {
 			ourPrecipitation = (int)WC.days[ourDay].Precipitation;
 			ourWindType = (int)WC.days[ourDay].Windtype;
 			ourWindStrength = WC.days[ourDay].WindSpeed;
-			ourWindDirection = (int)WC.days[ourDay].WindDirection;
+			ourWindDirection = (float)WC.days[ourDay].WindDirection;
 			ourSeaState = (int)WC.days[ourDay].Seastate;
 
 		}
@@ -117,20 +119,27 @@ public class ReportScript : MonoBehaviour {
 		today = newDay;
 	}
 
-	int Verify() {
+	public int Verify() {
+        
 		wellbeingMod = 0;
-		/*if (Predictions[0]) {
-			InputField tempInput = Temperature.GetComponent<InputField>();
+        
+        if (Predictions[0]) {
+			InputField tempInput = Temperature.GetComponentInChildren<InputField>();
 			Text tempText = tempInput.textComponent;
-			wellbeingMod -= (int) ( ( Mathf.Abs(ourTemp - Convert.ToInt32(tempText.text) )-10)/1.5f );
-		}
+            int r = -1000;
+            int.TryParse(tempText.text, out r);
+            if (r == -1000 || String.IsNullOrEmpty(tempText.text))
+            {
+                r = 50;
+            }
+            wellbeingMod -= (int) (( Mathf.Abs(ourTemp - r) - 10.0f)/1.5f);
+        }
 
 		if (Predictions[1]) {
-			Dropdown tempRange = HeatLevel.GetComponent<Dropdown>();
+			Dropdown tempRange = HeatLevel.GetComponentInChildren<Dropdown>();
+            //Debug.Log(tempRange.value);
 			int choice = tempRange.value;
 			wellbeingMod -= (int)(Mathf.Abs(ourTempRange - choice) - 3) * 2;
-
-
 		}
 
 		if (Predictions[2]) {
@@ -138,7 +147,7 @@ public class ReportScript : MonoBehaviour {
 			bool choice = disasterToggle.isOn;
 			if (choice == ourAnomaly)
 			{
-				wellbeingMod += 25;
+				wellbeingMod += 2;
 			}
 			else {
 				wellbeingMod -= 40;
@@ -146,28 +155,34 @@ public class ReportScript : MonoBehaviour {
 		}
 
 		if (Predictions[3]) {
-			InputField pressInput = Pressure.GetComponent<InputField>();
+			InputField pressInput = Pressure.GetComponentInChildren<InputField>();
 			Text pressText = pressInput.textComponent;
-			wellbeingMod -= (int)(Math.Abs(ourPressure - Convert.ToInt32(pressText.text))-4)*2;
-		}
+            int r = -1000;
+            int.TryParse(pressText.text, out r);
+            if (r == -1000 || String.IsNullOrEmpty(pressText.text))
+            {
+                r = 5;
+            }
+            wellbeingMod -= (int)(Math.Abs(ourPressure - (r))-4)*2;
+        }
 
 		if (Predictions[4])
 		{
-			Dropdown pressRange = PressureLevels.GetComponent<Dropdown>();
+			Dropdown pressRange = PressureLevels.GetComponentInChildren<Dropdown>();
 			int choice = pressRange.value;
 			wellbeingMod -= (int)(Mathf.Abs(ourPressureLevels - choice) - 1) * 5;
 		}
 
 		if (Predictions[5])
 		{
-			Dropdown cloudRange = CloudCover.GetComponent<Dropdown>();
+			Dropdown cloudRange = CloudCover.GetComponentInChildren<Dropdown>();
 			int choice = cloudRange.value;
 			wellbeingMod -= (int)(Mathf.Abs(ourCloudCover - choice) - 1) * 3;
 		}
 
 		if (Predictions[6])
 		{
-			Toggle fogToggle = DisasterToggle.GetComponent<Toggle>();
+			Toggle fogToggle = DisasterToggle.GetComponentInChildren<Toggle>();
 			bool choice = fogToggle.isOn;
 			if (choice == ourFoggle)
 			{
@@ -179,49 +194,72 @@ public class ReportScript : MonoBehaviour {
 		}
 
 		if (Predictions[7]) {
-			InputField humidInput = Humidity.GetComponent<InputField>();
+			InputField humidInput = Humidity.GetComponentInChildren<InputField>();
 			Text humidText = humidInput.textComponent;
-			wellbeingMod -= (int) ((Math.Abs(ourHumidity - Convert.ToInt32(humidText.text)) - 10)/1.5f);
-		}
+            int r = -1000;
+            int.TryParse(humidText.text, out r);
+            if (r == -1000 || String.IsNullOrEmpty(humidText.text))
+            {
+                r = 45;
+            }
+            wellbeingMod -= (int) ((Math.Abs(ourHumidity -r) - 10)/1.5f);
+        }
 
 		if (Predictions[8]) {
-			Dropdown skyRange = SkyColor.GetComponent<Dropdown>();
+			Dropdown skyRange = SkyColor.GetComponentInChildren<Dropdown>();
 			int choice = skyRange.value;
 			wellbeingMod -= (int)(Mathf.Abs(ourSkyColor - choice) - 1) * 3;
 		}
 
 		if (Predictions[9])
 		{
-			Dropdown precip = Precipitation.GetComponent<Dropdown>();
+			Dropdown precip = Precipitation.GetComponentInChildren<Dropdown>();
 			int choice = precip.value;
 			wellbeingMod -= (int)(Mathf.Abs(ourPrecipitation - choice) - 1) * 15;
 		}
 
 		if (Predictions[10]) {
-			Dropdown windT = WindType.GetComponent<Dropdown>();
+			Dropdown windT = WindType.GetComponentInChildren<Dropdown>();
 			int choice = windT.value;
 			wellbeingMod -= (int)(Mathf.Abs(ourWindType - choice) - 3) * 5;
 		}
 
 		if (Predictions[11])
 		{
-			InputField windInput = WindStrength.GetComponent<InputField>();
+			InputField windInput = WindStrength.GetComponentInChildren<InputField>();
 			Text windText = windInput.textComponent;
-			wellbeingMod -= (int)((Math.Abs(ourWindStrength - Convert.ToInt32(windText.text)) - 5) * 4);
-		}
+            int r = -1000;
+            int.TryParse(windText.text, out r);
+            if (r == -1000 || String.IsNullOrEmpty(windText.text))
+            {
+                r = 10;
+            }
+            wellbeingMod -= (int)((Math.Abs(ourWindStrength - r) - 5.0f) * 4.0f);
+            //notice = r;
+        }
 
-		if (Predictions[12]) {
-			Dropdown windDT = WindDirection.GetComponent<Dropdown>();
-			int choice = windDT.value;
-			wellbeingMod -= (int)(Mathf.Abs(ourWindDirection - choice) - 4) * 2;
-		}
+		/*if (Predictions[12]) {
+			ToggleGroup windDT = WindDirection.GetComponentInChildren<ToggleGroup>();
+			int choice = windDT.;
+            int dirDist = Mathf.Min(((8 - Mathf.Max(ourWindDirection, choice)) + (Mathf.Min(ourWindDirection, choice))), Mathf.Abs(ourWindDirection - choice));
+            wellbeingMod -= (int)(dirDist * 2);
 
-		if (Predictions[13]) {
-			Dropdown seaT = SeaState.GetComponent<Dropdown>();
-			int choice = seaT.value;
-			wellbeingMod -= (int)(Mathf.Abs(ourSeaState - choice) - 3) * 7;
 		}*/
 
-		return wellbeingMod;
+		if (Predictions[13]) {
+			Dropdown seaT = SeaState.GetComponentInChildren<Dropdown>();
+			int choice = seaT.value;
+			wellbeingMod -= (int)(Mathf.Abs(ourSeaState - choice) - 3) * 7;
+		}
+
+        if(wellbeingMod < 0)
+        {
+            wellbeingMod /= 8;
+
+        }
+
+        Debug.Log("wellbeingMod: " + wellbeingMod.ToString());
+
+        return wellbeingMod;
 	}
 }

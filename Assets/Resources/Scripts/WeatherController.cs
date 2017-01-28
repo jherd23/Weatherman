@@ -41,7 +41,7 @@ public class WeatherController : MonoBehaviour {
 	bool fog = false;
 	Day.windType wt;
 	Day.seaState st;
-	Day.windDirection wd;
+	public Day.windDirection wd;
 	Day.pressureRange p;
 	Day.temperatureRange tr;
 

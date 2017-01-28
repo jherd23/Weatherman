@@ -15,6 +15,8 @@ public class Plane_Script : MonoBehaviour {
 
     bool newgame;
 
+    public GameObject RT;
+
 	void Start () {
 		r = this.gameObject.GetComponent < MeshRenderer >();
 		alphaTarget = 0;
@@ -80,6 +82,7 @@ public class Plane_Script : MonoBehaviour {
     }
 
 	public void ChangeDayOut(){
+        RT.GetComponent<ReportScript>().Verify();
 		Camera.main.GetComponent<CameraMovement> ().resetView ();
 		wait = true;
 	}

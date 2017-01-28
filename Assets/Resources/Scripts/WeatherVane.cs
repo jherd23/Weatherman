@@ -51,7 +51,7 @@ public class WeatherVane : Device {
 		rotateTo (d.WindDirection);
 	}
 
-	float directionToDegrees(Day.windDirection r) {
+	public float directionToDegrees(Day.windDirection r) {
 		switch (r) {
 			case Day.windDirection.N:
 				return 0;
